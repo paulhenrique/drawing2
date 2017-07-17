@@ -9,7 +9,6 @@
 	<link rel="stylesheet" type="text/css" href="css/colorpicker.css">
 	<link rel="stylesheet" type="text/css" href="css/materialize.min.css">
 	<link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
-	
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
@@ -18,7 +17,7 @@
 			<a href="#" data-activates="mobile-demo" class="show button-collapse"><i class="material-icons">menu</i></a>
 			<ul class="right hide-on-med-and-down">	
 			</ul>
-			<div class="side-nav grey darken-4 white-text " id="mobile-demo">
+			<div class="side-nav grey darken-4 white-text align-left" id="mobile-demo">
 				<div class="mode">
 					<a class="mode-selection active" href="#select">
 						<i class="fa fa-mouse-pointer" aria-hidden="true"></i>
@@ -34,16 +33,17 @@
 					</a>
 				</div>
 				<div id="select" class="col s12 hidden ">
-					Ferramenta Selecionar <br>
-					Utilize a ferramenta selecionar para escolher objeto que deseja alterar propriedades
+					
 				</div>
 				<div id="balde" class="col s12 hidden"> 
 					Test2
 				</div>
+				
 				<div id="forma" class="col s12 hidden"> 
-					<h5>Formas:</h5>
-					<div class="row">
-						<div class="forma">
+					<p class="clear">Formas:</p>
+
+					<div class="row formas">
+						<div>
 							<a class="forma-selection active" href="#square">
 								<i class="fa fa-square" aria-hidden="true"></i>
 							</a>
@@ -56,14 +56,30 @@
 						</div>
 					</div>
 					<div class="row">
-						<h5>Cor:</h5>
+						<p>Cor:</p>
 						<div id="colorSelector">
 							<div ></div>
 						</div>	
-						<h5>Borda:</h5>
+						<p>Borda:</p>
 						<div id="borderSelector">
 							<div></div>
 						</div>	
+						<p>Espessura da borda:</p>
+						<div style="margin-top: -20px;" class="col s6 ">
+							<form action="#">
+								<p class="range-field" id="borderSize">
+									<input type="range"  min="0" max="10" />
+								</p>
+							</form>
+						</div>
+						<p class="clear">Tamanho da Forma:</p>
+						<div style="margin-top: -20px;" class="col s6 ">
+							<form action="#">
+								<p class="range-field" id="formSize">
+									<input type="range"  min="30" max="200" />
+								</p>
+							</form>
+						</div>
 					</div>
 				</div>
 				<div id="listObjetos" class="collapsible hidden" data-collapsible="accordion">
@@ -95,29 +111,7 @@
 <script type="text/javascript" src="js/colorpicker.js"></script>
 <script type="text/javascript" src="js/funct.js"></script>
 <script type="text/javascript">
-	function adicionarForma(e){
-		var posicao = e.pageX,
-		posicaoy = e.pageY,
-		backgroundColor = localStorage.color,
-		borderColor = localStorage.borderColor;
-		var forma = $("<div>");
-		forma.css({
-			"position":"absolute",
-			"left":posicao,
-			"top":posicaoy,
-			"background": backgroundColor,
-			"border-color": borderColor
-		});
-		if(localStorage.forma == "#square")
-			forma.addClass("square");
-		if (localStorage.forma == "#circle")
-			forma.addClass("circle");
-		$(".container-obj").append(forma);		
-	}
-	$(".container-obj").on("click", function(e){
-		adicionarForma(e);
-	});
-	$("#colorSelector div").css({"backgroundColor": localStorage.color});
-	$("#borderSelector div").css({"backgroundColor": localStorage.borderColor});
+
+
 </script>
 </html>

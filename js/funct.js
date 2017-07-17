@@ -20,7 +20,6 @@ $('#colorSelector').ColorPicker({
 	},
 	onChange: function (hsb, hex, rgb) {
 		localStorage.color = '#' + hex;
-		console.log(localStorage.color);
 		$('#colorSelector div').css('backgroundColor', localStorage.color);
 	}
 });
@@ -36,7 +35,6 @@ $('#borderSelector').ColorPicker({
 	},
 	onChange: function (hsb, hex, rgb) {
 		localStorage.borderColor = '#' + hex;
-		console.log(localStorage.borderColor);
 		$('#borderSelector div').css('backgroundColor', localStorage.borderColor);
 	}
 });
@@ -61,3 +59,35 @@ $(".forma-selection").on("click", function(){
 	localStorage.forma = forma;
 	console.log(localStorage.forma);
 });
+
+
+//DESENHANDO NA TELA
+function adicionarForma(e){
+	var posicao = e.pageX,
+	posicaoy = e.pageY,
+	backgroundColor = localStorage.color,
+	borderColor = localStorage.borderColor,
+	borderSize = $("#borderSize span span").text(),
+	formSize = $("#formSize span span").text(),
+	forma = $("<div>");
+	forma.css({
+		"position":"absolute",
+		"left":posicao,
+		"top":posicaoy,
+		"background": backgroundColor,
+		"border-color": borderColor,
+		"border-width" : borderSize,
+		"width": formSize,
+		"height": formSize
+	});
+	if(localStorage.forma == "#square")
+		forma.addClass("square");
+	if (localStorage.forma == "#circle")
+		forma.addClass("circle");
+	$(".container-obj").append(forma);		
+}
+$(".container-obj").on("click", function(e){
+	adicionarForma(e);
+});
+$("#colorSelector div").css({"backgroundColor": localStorage.color});
+$("#borderSelector div").css({"backgroundColor": localStorage.borderColor});
