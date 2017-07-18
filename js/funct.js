@@ -38,7 +38,6 @@ $('#borderSelector').ColorPicker({
 		$('#borderSelector div').css('backgroundColor', localStorage.borderColor);
 	}
 });
-
 $(".mode-selection").on("click", function(){
 	$(".mode-selection").removeClass("active");
 	$(".mode-selection").each(function(){
@@ -49,7 +48,14 @@ $(".mode-selection").on("click", function(){
 	$(this).addClass("active");
 	var div = $(this).attr("href");
 	$(div).removeClass("hidden");
+	localStorage.mode = $(this).attr("href");
+	console.log("DW MODE : " + localStorage.mode);
 	$(div).addClass("show");
+	if (localStorage.mode == "#forma"){
+		$(".container-obj").css({
+			"cursor": "url('cur/cur2.cur'), default"
+		})
+	}
 });
 
 $(".forma-selection").on("click", function(){
@@ -57,10 +63,8 @@ $(".forma-selection").on("click", function(){
 	$(this).addClass("active");
 	var forma = $(this).attr("href");
 	localStorage.forma = forma;
-	console.log(localStorage.forma);
+	console.log("DW MODE DRAWING FORM : " + localStorage.forma);
 });
-
-
 //DESENHANDO NA TELA
 function adicionarForma(e){
 	var posicao = e.pageX,
@@ -70,6 +74,13 @@ function adicionarForma(e){
 	borderSize = $("#borderSize span span").text(),
 	formSize = $("#formSize span span").text(),
 	forma = $("<div>");
+	var contadorElementos = $("div#listObjetos a.collection-item").length;
+	var nomeObjeto = "figura"+contadorElementos;
+	//Colocar nas layers
+	var a = $("<a/>").attr("class", "collection-item layer collapsible-header").attr("data-item",nomeObjeto).append(nomeObjeto);
+	var li = $("<li>").append(a);
+	$("#listObjetos").prepend(a);
+	//propriedades
 	forma.css({
 		"position":"absolute",
 		"left":posicao,
@@ -79,15 +90,21 @@ function adicionarForma(e){
 		"border-width" : borderSize,
 		"width": formSize,
 		"height": formSize
-	});
+	}).attr("id", nomeObjeto);
+	//definir formato
 	if(localStorage.forma == "#square")
 		forma.addClass("square");
 	if (localStorage.forma == "#circle")
 		forma.addClass("circle");
 	$(".container-obj").append(forma);		
+	//tornar resizable
+	objeto = $("#"+nomeObjeto);
+	objeto.resizable();
+	objeto.draggable();
 }
 $(".container-obj").on("click", function(e){
-	adicionarForma(e);
+	if (localStorage.mode == "#forma") 
+		adicionarForma(e);
 });
 $("#colorSelector div").css({"backgroundColor": localStorage.color});
 $("#borderSelector div").css({"backgroundColor": localStorage.borderColor});

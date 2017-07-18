@@ -1,4 +1,4 @@
-// //Tornar item arrastável 
+//Tornar item arrastável 
 // $( function() {
 // 	$( ".item" ).draggable({ containment: "#containment-wrapper", scroll: false });
 // });
@@ -7,25 +7,26 @@
 // 	$(this).addClass("selected");
 // });
 // //criar item
-// $("#add").on("click", function () {
-// 	var contadorElementos, contadorChars, nomeObjeto, corObjeto, form, item, icon, linkRemove, a, li, iconeLayer;
-// 	contadorElementos = $("div#listObjetos a.collection-item").length;//QUANTIDADE DE ELEMENTOS NA LISTA DE ELEMENTOS
-// 	contadorChars = $("#novoObjetoNome").val(); //CHARS DIGITADOS PELO USUÁRIO
-// 	nomeObjeto = (contadorChars.length > 3)? $("#novoObjetoNome").val() : "Objeto"+contadorElementos;
-// 	corObjeto = $("i.selected").attr("data-color");
-// 	form = $("i.form-option.selected").attr("data-form"); //FROMA DO OBJETO
-// 	item = $("<div>").attr("class",form + " draggable ui-widget-content").attr("id", nomeObjeto).css("background", corObjeto).css("z-index",0);
-// 	//icon = $("<i>").attr("class","material-icons right white-text small oculto").append("close");
-// 	//linkRemove = $("<a/>").attr("href","#").attr("class","removerItem").attr("data-remove",nomeObjeto).append(icon);
-// 	iconeLayer = $("<i>").addClass("material-icons").append("layers");
-// 	a = $("<a/>").attr("class", "collection-item layer collapsible-header").attr("data-item",nomeObjeto).append(nomeObjeto).prepend(iconeLayer);
-// 	li = $("<li>").append(a);
-// 	//$(".collection-item").removeClass("active");
-// 	$("#listObjetos").prepend(a);
-// 	$(".container-obj").append(item);
-// 	Materialize.toast(nomeObjeto+' foi adicionado', 3000);
+$("#add").on("click", function () {
+	var contadorElementos, contadorChars, nomeObjeto, corObjeto, form, item, icon, linkRemove, a, li, iconeLayer;
 
-// });
+	contadorElementos = $("div#listObjetos a.collection-item").length;//QUANTIDADE DE ELEMENTOS NA LISTA DE ELEMENTOS
+	//contadorChars = $("#novoObjetoNome").val(); //CHARS DIGITADOS PELO USUÁRIO
+	// nomeObjeto = (contadorChars.length > 3)? $("#novoObjetoNome").val() : "Objeto"+contadorElementos;
+	// corObjeto = $("i.selected").attr("data-color");
+	// form = $("i.form-option.selected").attr("data-form"); //FROMA DO OBJETO
+	// item = $("<div>").attr("class",form + " draggable ui-widget-content").attr("id", nomeObjeto).css("background", corObjeto).css("z-index",0);
+	//icon = $("<i>").attr("class","material-icons right white-text small oculto").append("close");
+	//linkRemove = $("<a/>").attr("href","#").attr("class","removerItem").attr("data-remove",nomeObjeto).append(icon);
+	iconeLayer = $("<i>").addClass("material-icons").append("layers");
+	a = $("<a/>").attr("class", "collection-item layer collapsible-header").attr("data-item",nomeObjeto).append(nomeObjeto).prepend(iconeLayer);
+	li = $("<li>").append(a);
+	//$(".collection-item").removeClass("active");
+	$("#listObjetos").prepend(a);
+	$(".container-obj").append(item);
+	Materialize.toast(nomeObjeto+' foi adicionado', 3000);
+
+});
 
 
 
