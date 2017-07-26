@@ -68,8 +68,13 @@ $(document).ready(function(){
 			if (localStorage.forma == "#circle") 
 				alteraCursor("circle");
 		}
-		if (localStorage.mode == "#select") 
+		if (localStorage.mode == "#select"){
 			alteraCursor("default");
+			$("div#listObjetos a.collection-item").each(function () {
+				var objeto = $("#" + $(this).attr("data-item"));
+				objeto.draggable().resizable();
+			});
+		}
 	});
 	function alteraCursor(cursor){
 		$(".container-obj").css({
@@ -118,8 +123,7 @@ $(document).ready(function(){
 		$(".container-obj").append(forma);		
 		//tornar resizable
 		objeto = $("#"+nomeObjeto);
-		objeto.resizable();
-		objeto.draggable();
+		// objeto.resizable().draggable();
 	}
 	$(".container-obj").on("click", function(e){
 		if (localStorage.mode == "#forma") 
