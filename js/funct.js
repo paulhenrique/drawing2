@@ -2,9 +2,14 @@
 //Paulo Henrique Vieira 17/07/2017
 $(document).ready(function(){
 	$(".button-collapse").sideNav();
-
-	if(!localStorage.mode)
-		localStorage.mode = "#select";
+	localStorage.mode = "#select";
+	var altura = $(document).height() + 500;
+	$("#painel").height(altura);
+	$("#containment-wrapper").height(altura);
+	$(window).resize(function(){
+		$("#painel").height(altura);
+		$("#containment-wrapper").height(altura);		
+	});
 	if(!localStorage.color)
 		localStorage.color = "blue";
 	if (!localStorage.borderColor) 
@@ -49,30 +54,37 @@ $(document).ready(function(){
 	$(".mode-selection").on("click", function(){
 		$(".mode-selection").removeClass("active");
 		$(".mode-selection").each(function(){
-			var divRemove = $(this).attr("href");
+			var divRemove = $(this).attr("data-active");
 			$(divRemove).removeClass("show");		
 			$(divRemove).addClass("hidden");
 		});
 		$(this).addClass("active");
-		var div = $(this).attr("href");
+		var div = $(this).attr("data-active");
 		$(div).removeClass("hidden");
-		localStorage.mode = $(this).attr("href");
+		localStorage.mode = $(this).attr("data-active");
 		console.log("DW MODE : " + localStorage.mode);
 		$(div).addClass("show");
 		
 		if (localStorage.mode == "#forma"){
+			$("div#listObjetos a.collection-item").each(function () {
+				var objeto = $("#" + $(this).attr("data-item"));
+				objeto.draggable({disabled:true}).resizable({disabled:true});
+			});
 			if(!localStorage.forma)
 				localStorage.forma = "#square";
 			if (localStorage.forma == "#square") 
 				alteraCursor("cur2");
 			if (localStorage.forma == "#circle") 
 				alteraCursor("circle");
+
+
 		}
 		if (localStorage.mode == "#select"){
 			alteraCursor("default");
 			$("div#listObjetos a.collection-item").each(function () {
 				var objeto = $("#" + $(this).attr("data-item"));
-				objeto.draggable().resizable();
+				//objeto.draggable().resizable();
+				objeto.draggable({disabled:false}).resizable({disabled:false});
 			});
 		}
 	});
@@ -84,7 +96,7 @@ $(document).ready(function(){
 	$(".forma-selection").on("click", function(){
 		$(".forma-selection").removeClass("active");
 		$(this).addClass("active");
-		var forma = $(this).attr("href");
+		var forma = $(this).attr("data-active");
 		localStorage.forma = forma;
 		console.log("DW MODE DRAWING FORM : " + localStorage.forma);
 	});
@@ -101,7 +113,7 @@ $(document).ready(function(){
 		var contadorElementos = $("div#listObjetos a.collection-item").length;
 		var nomeObjeto = "figura"+contadorElementos;
 		//Colocar nas layers
-		var a = $("<a/>").attr("class", "collection-item layer collapsible-header").attr("data-item",nomeObjeto).append(nomeObjeto);
+		var a = $("<a/>").attr("class", "collection-item layer").attr("data-item",nomeObjeto).append(nomeObjeto);
 		var li = $("<li>").append(a);
 		$("#listObjetos").prepend(a);
 		//propriedades

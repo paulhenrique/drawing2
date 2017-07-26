@@ -12,80 +12,81 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
-	<nav>
-		<div class="nav-wrapper black">
-			<a href="#" data-activates="mobile-demo" class="show button-collapse"><i class="material-icons">menu</i></a>
-			<ul class="right hide-on-med-and-down">	
-			</ul>
-			<div class="side-nav grey darken-4 white-text align-left" id="mobile-demo">
-				<div class="mode">
-					<a class="mode-selection active" href="#select">
-						<i class="fa fa-mouse-pointer" aria-hidden="true"></i>
-					</a>
-					<a class="mode-selection"  href="#balde">
-						<i class="material-icons">format_color_fill</i>
-					</a>
-					<a class="mode-selection"  href="#forma">
-						<i class="fa fa-square" aria-hidden="true"></i>
-					</a>
-					<a class="mode-selection"  href="#camadas">
-						<i class="material-icons">layers</i>
-					</a>
-				</div>
-				<div id="select" class="col s12 hidden ">
-					
-				</div>
-				<div id="balde" class="col s12 hidden"> 
-					
-				</div>
-				<div id="forma" class="col s12 hidden"> 
-					<p class="clear">Formas:</p>
+	<div class="row">
+		<div class="col s2 grey darken-4 white-text align-left" id="painel">
+			<div class="mode">
+				<a class="mode-selection active" data-active="#select">
+					<i class="fa fa-mouse-pointer" aria-hidden="true"></i>
+				</a>
+				<a class="mode-selection"  data-active="#balde">
+					<i class="material-icons">format_color_fill</i>
+				</a>
+				<a class="mode-selection"  data-active="#forma">
+					<i class="fa fa-square" aria-hidden="true"></i>
+				</a>
+				<a class="mode-selection"  data-active="#camadas">
+					<i class="material-icons">layers</i>
+				</a>
+			</div>
+			<div id="select" class="col s12 hidden ">
 
-					<div class="row formas">
-						<div>
-							<a class="forma-selection active" href="#square">
-								<i class="fa fa-square" aria-hidden="true"></i>
-							</a>
-							<a class="forma-selection" href="#circle">
-								<i class="fa fa-circle" aria-hidden="true"></i>
-							</a>
-							<a class="forma-selection" href="#star">
-								<i class="fa fa-star" aria-hidden="true"></i>
-							</a>
-						</div>
+			</div>
+			<div id="balde" class="col s12 hidden"> 
+
+			</div>
+			<div id="forma" class="col s12 hidden"> 
+				<div class="row">
+					<p class="clear">Formas:</p>
+				</div>
+				<div class="row formas">
+					<div>
+						<a class="forma-selection active" data-active="#square">
+							<i class="fa fa-square" aria-hidden="true"></i>
+						</a>
+						<a class="forma-selection" data-active="#circle">
+							<i class="fa fa-circle" aria-hidden="true"></i>
+						</a>
+						<a class="forma-selection" data-active="#star">
+							<i class="fa fa-star" aria-hidden="true"></i>
+						</a>
+					</div>
+				</div>
+				<div class="row">
+					<p>Cor:</p>
+					<div id="colorSelector">
+						<div ></div>
+					</div>	
+					<p>Borda:</p>
+					<div id="borderSelector">
+						<div></div>
+					</div>	
+					<div class="row">
+						<p>Espessura da borda:</p>
+					</div>
+					<div style="margin-top: -20px;" class="col s6 ">
+						<form action="#">
+							<p class="range-field" id="borderSize">
+								<input type="range"  min="0" max="10" />
+							</p>
+						</form>
 					</div>
 					<div class="row">
-						<p>Cor:</p>
-						<div id="colorSelector">
-							<div ></div>
-						</div>	
-						<p>Borda:</p>
-						<div id="borderSelector">
-							<div></div>
-						</div>	
-						<p>Espessura da borda:</p>
-						<div style="margin-top: -20px;" class="col s6 ">
-							<form action="#">
-								<p class="range-field" id="borderSize">
-									<input type="range"  min="0" max="10" />
-								</p>
-							</form>
-						</div>
 						<p class="clear">Tamanho da Forma:</p>
-						<div style="margin-top: -20px;" class="col s6 ">
-							<form action="#">
-								<p class="range-field" id="formSize">
-									<input type="range"  min="30" max="200" />
-								</p>
-							</form>
-						</div>
+					</div>					
+					<div style="margin-top: -20px;" class="col s6 ">
+						<form action="#">
+							<p class="range-field" id="formSize">
+								<input type="range"  min="30" max="200" />
+							</p>
+						</form>
 					</div>
 				</div>
-				<div id="camadas" class="col s12 hidden">
-					<div id="listObjetos" class="collapsible " data-collapsible="accordion">
-					</div>
+			</div>
+			<div id="camadas" class="col s12 hidden">
+				<div id="listObjetos" class="collapsible " data-collapsible="accordion">
 				</div>
-				
+			</div>
+
 				<!-- <div class="row">
 					<div class="col s6">
 						<p>Selecione a cor:</p>
@@ -100,20 +101,17 @@
 					<i class="material-icons form-option black-text" data-form="circle">not_interested</i>
 				</div> -->
 			</div>
+			<div id="containment-wrapper" class=" col s10 container-obj">
+			</div>
 		</div>
-	</nav>
-	<div class="row">
-		<div id="containment-wrapper" class="container-obj">
-		</div>
-	</div>
-</body>
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/materialize.js"></script>
-<script type="text/javascript" src="js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="js/colorpicker.js"></script>
-<script type="text/javascript" src="js/funct.js"></script>
-<script type="text/javascript">
+	</body>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/materialize.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="js/colorpicker.js"></script>
+	<script type="text/javascript" src="js/funct.js"></script>
+	<script type="text/javascript">
 
 
-</script>
-</html>
+	</script>
+	</html>
