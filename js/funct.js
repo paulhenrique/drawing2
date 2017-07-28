@@ -1,6 +1,6 @@
 //Script com funcionamento
-//Paulo Henrique Vieira 17/07/2017
-//Classes
+//Paulo Henrique Vieira 17/07/2017 ============
+//Classes ==========
 function alteraCursor(cursor){
 	$(".container-obj").css({
 		"cursor": "url('cur/"+cursor+".cur'), default"
@@ -67,17 +67,29 @@ function geometria(){
 		return this.nomeObjeto;
 	};
 	this.adicionarForma = function(){
-		forma.css({
-			"position":"absolute",
-			"left":this.xInicial,
-			"top":this.yInicial,
-			"background": this.background,
-			"border-width" : this.borderWidth,
-			"border-color":this.borderColor,
-			"border-style":"solid",
-			"width": "1px",
-			"height": "1px"
-		}).attr("id", this.nomeObjeto);	
+		if(this.tipo != "triangle"){
+			forma.css({
+				"position":"absolute",
+				"left":this.xInicial,
+				"top":this.yInicial,
+				"background": this.background,
+				"border-width" : this.borderWidth,
+				"border-color":this.borderColor,
+				"border-style":"solid",
+				"width": "1px",
+				"height": "1px"
+			}).attr("id", this.nomeObjeto);	
+		};
+		if(this.tipo == "triangle"){
+			forma.css({
+				"background": "linear-gradient(to right bottom, "+this.background+" 0%,"+this.background+" 50%,rgba(255, 255, 255, 0) 50%,rgba(255, 255, 255, 0) 100%)",
+				"position":"absolute",
+				"left":this.xInicial,
+				"top":this.yInicial,
+				"width": "1px",
+				"height": "1px"
+			}).attr("id", this.nomeObjeto);	
+		};
 		forma.addClass(this.tipo);
 		$(".container-obj").append(forma);
 	};
@@ -112,7 +124,6 @@ function listaObjetos(){
 };
 $(document).ready(function(){
 	//variaveis globais
-	//Inicio do funcionamento
 	var color = (localStorage.getItem('color'))? localStorage.color : '#0000ff';
 	var borderColor = (localStorage.getItem('borderColor'))? localStorage.borderColor : '#0000ff';	
 	var xInicial; 
@@ -150,6 +161,18 @@ $(document).ready(function(){
 			objetoatual = $("#"+nmObjeto);
 		};
 	});
+	var proporcional = false;
+	$( "body" ).keydown(function( event ) {
+		if(event.key == "Shift"){
+			proporcional = true;
+		}
+	});
+	$( "body" ).keyup(function( event ) {
+		if(event.key == "Shift"){
+			proporcional = false;
+		}
+	});
+
 	$(".container-obj").on("mousemove", function(e){
 		if(!desenhar)
 			return;		
@@ -162,8 +185,12 @@ $(document).ready(function(){
 
 		if(xAtual > xInicial)
 			objetoatual.width(diferencaX);	
-		if(yAtual > yInicial)
-			objetoatual.height(diferencaY);	
+		if(yAtual > yInicial){
+			if(proporcional)
+				objetoatual.height(objetoatual.width());	
+			else
+				objetoatual.height(diferencaY);	
+		}
 	});
 	$(".container-obj").on("mouseup", function(){
 		desenhar = false;
