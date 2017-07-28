@@ -1,9 +1,24 @@
 //Script com funcionamento
 //Paulo Henrique Vieira 17/07/2017
+//Classes
 function alteraCursor(cursor){
 	$(".container-obj").css({
 		"cursor": "url('cur/"+cursor+".cur'), default"
 	});
+};
+function habDragResi(text){
+	if(text == "disabled"){
+		$("ul#listObjetos li").each(function () {
+			var objeto = $("#" + $(this).attr("data-item"));
+			objeto.draggable({disabled:true}).resizable({disabled:true});
+		});
+	};
+	if (text == "habled") {
+		$("ul#listObjetos li").each(function () {
+			var objeto = $("#" + $(this).attr("data-item"));
+			objeto.draggable({disabled:false}).resizable({disabled:false});
+		});
+	};
 };
 function geometria(){
 	
@@ -15,28 +30,28 @@ function geometria(){
 	var background;
 	this.setBackground = function (_backgroud){
 		this.background = _backgroud;
-	}
+	};
 	this.setTipo = function(_tipo){
 		this.tipo = _tipo;
-	}
+	};
 	this.setXInicial = function(_xInicial){
 		this.xInicial = _xInicial;
-	}
+	};
 	this.getXInicial = function(){
 		return this.xInicial;
-	}
+	};
 	this.setYInicial = function(_yInicial){
 		this.yInicial = _yInicial;
-	}
+	};
 	this.getYInicial = function(){
 		return this.yInicial;
-	}
+	};
 	this.setNomeObjeto = function(_nomeObjeto){
 		this.nomeObjeto = _nomeObjeto;
-	}
+	};
 	this.getNomeObjeto = function(){
 		return this.nomeObjeto;
-	}
+	};
 	this.adicionarForma = function(){
 		forma.css({
 			"position":"absolute",
@@ -48,7 +63,10 @@ function geometria(){
 		}).attr("id", this.nomeObjeto);	
 		forma.addClass(this.tipo);
 		$(".container-obj").append(forma);
-	}
+	};
+	this.removerForma = function(){
+		//removerForma
+	};
 };
 function verificarForma(){
 	if(localStorage.forma == "#square")
@@ -56,13 +74,24 @@ function verificarForma(){
 	if (localStorage.forma == "#circle")
 		return "circle";
 };
-function adicionarItem(item){
-	var li = $("<li>").attr("data-item", item);
-	li.append(item);
-	$("#listObjetos").prepend(li);
+function listaObjetos(){
+	var nomeObjeto;
+	this.setNomeObjeto = function(_nomeObjeto){
+		this.nomeObjeto = _nomeObjeto;
+	};
+	this.adicionarItem = function(){
+		var li = $("<li>").attr("data-item", this.nomeObjeto);
+		li.addClass("collection-item");
+		li.append(this.nomeObjeto);
+		$("#listObjetos").prepend(li);	
+	};
+	this.removerItem = function(){
+		//removerItem
+	};
 };
 $(document).ready(function(){
 	//variaveis globais
+	//Inicio do funcionamento
 	var color = (localStorage.getItem('color'))? localStorage.color : '#0000ff';
 	var borderColor = (localStorage.getItem('borderColor'))? localStorage.color : '#0000ff';	
 	var xInicial; 
@@ -74,7 +103,6 @@ $(document).ready(function(){
 	var desenhar = false; 
 	var objetoatual; 
 	var altura = $(document).height() + 500;	
-	var listaObjetos = $("#listObjetos");
 
 	$(".container-obj").on("mousedown", function(e){
 		if (localStorage.mode == "#forma") {
@@ -88,9 +116,14 @@ $(document).ready(function(){
 			geom.setNomeObjeto("geometria" + $("#listObjetos li").length);
 			geom.setBackground(localStorage.color);
 			geom.adicionarForma();
-			adicionarItem(geom.getNomeObjeto());
-			objetoatual = $("#"+geom.getNomeObjeto());
-		}
+			
+			var nmObjeto = geom.getNomeObjeto();
+			
+			listObj = new listaObjetos();
+			listObj.setNomeObjeto(nmObjeto);
+			listObj.adicionarItem();
+			objetoatual = $("#"+nmObjeto);
+		};
 	});
 	$(".container-obj").on("mousemove", function(e){
 		if(!desenhar)
@@ -124,35 +157,22 @@ $(document).ready(function(){
 		localStorage.mode = $(this).attr("data-active");
 		console.log("DW MODE : " + localStorage.mode);
 		$(div).addClass("show");
-		
 		if (localStorage.mode == "#forma"){
-			$("div#listObjetos a.collection-item").each(function () {
-				var objeto = $("#" + $(this).attr("data-item"));
-				objeto.draggable({disabled:true}).resizable({disabled:true});
-			});
+			habDragResi("disabled");
 			if(!localStorage.forma)
 				localStorage.forma = "#square";
-			if (localStorage.forma == "#square") 
-				alteraCursor("cur2");
-			if (localStorage.forma == "#circle") 
-				alteraCursor("circle");
-		}
+			alteraCursor(verificarForma());
+		};
 		if (localStorage.mode == "#select"){
 			alteraCursor("default");
-			$("ul#listObjetos li").each(function (val, cont) {
-				console.log(cont);	
-				var objeto = $("#" + $(this).attr("data-item"));
-				objeto.draggable({disabled:false}).resizable({disabled:false});
-			});
-		}
+			habDragResi("habled");
+		};
 		if (localStorage.mode == "#camadas"){
 			alteraCursor("default");
-			$("ul#listObjetos li").each(function () {
-				var objeto = $("#" + $(this).attr("data-item"));
-				objeto.draggable({disabled:false}).resizable({disabled:false});
-			});
-		}
+			habDragResi("habled");
+		};
 	});
+	
 	//SELEÇÃO DE FORMA
 	$(".forma-selection").on("click", function(){
 		$(".forma-selection").removeClass("active");
@@ -162,20 +182,7 @@ $(document).ready(function(){
 		console.log("DW MODE DRAWING FORM : " + localStorage.forma);
 	});
 
-	//DESENHANDO NA TELA
-	
-	// $(".container-obj").on("mousedown", function(e){
-
-	// 	if (localStorage.mode == "#forma") 
-	// 		adicionarForma(e);
-	// });
-	// $(".container-obj").on("mouseup", function(e){
-
-	// 	// if (localStorage.mode == "#forma") 
-	// 	// 	adicionarForma(e);
-	// });
-
-	//configurações
+	//configurações visuais
 	$(".button-collapse").sideNav();
 	$("#painel").height(altura);
 	$("#containment-wrapper").height(altura);
@@ -205,7 +212,6 @@ $(document).ready(function(){
 			$('#colorSelector div').css('backgroundColor', localStorage.color);
 		}
 	});
-
 	$('#borderSelector').ColorPicker({
 		onShow: function (colpkr) {
 			$(colpkr).fadeIn(500);
