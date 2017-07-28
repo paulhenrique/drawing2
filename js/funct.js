@@ -28,6 +28,20 @@ function geometria(){
 	var nomeObjeto;
 	var tipo;
 	var background;
+	var borderWidth;
+	var borderColor;
+	this.setBorderColor = function (_border){
+		this.borderColor = _border;
+	}
+	this.getBorderColor = function(){
+		return this.borderColor;
+	}
+	this.setBorderWidth = function(_border){
+		this.borderWidth = _border;
+	}
+	this.getBorderWidth = function(){
+		return this.borderWidth;
+	}
 	this.setBackground = function (_backgroud){
 		this.background = _backgroud;
 	};
@@ -58,6 +72,9 @@ function geometria(){
 			"left":this.xInicial,
 			"top":this.yInicial,
 			"background": this.background,
+			"border-width" : this.borderWidth,
+			"border-color":this.borderColor,
+			"border-style":"solid",
 			"width": "1px",
 			"height": "1px"
 		}).attr("id", this.nomeObjeto);	
@@ -93,7 +110,7 @@ $(document).ready(function(){
 	//variaveis globais
 	//Inicio do funcionamento
 	var color = (localStorage.getItem('color'))? localStorage.color : '#0000ff';
-	var borderColor = (localStorage.getItem('borderColor'))? localStorage.color : '#0000ff';	
+	var borderColor = (localStorage.getItem('borderColor'))? localStorage.borderColor : '#0000ff';	
 	var xInicial; 
 	var yInicial; 
 	var xFinal; 
@@ -102,6 +119,8 @@ $(document).ready(function(){
 	var yAtual; 
 	var desenhar = false; 
 	var objetoatual; 
+	var borderWidth;
+	console.log(borderWidth);
 	var altura = $(document).height() + 500;	
 
 	$(".container-obj").on("mousedown", function(e){
@@ -109,12 +128,15 @@ $(document).ready(function(){
 			xInicial = e.pageX;
 			yInicial = e.pageY;
 			desenhar = true;
+			borderWidth = $("#borderSize span span").text();
 			geom = new geometria();
 			geom.setXInicial(xInicial);
 			geom.setYInicial(yInicial);
 			geom.setTipo(verificarForma());
 			geom.setNomeObjeto("geometria" + $("#listObjetos li").length);
 			geom.setBackground(localStorage.color);
+			geom.setBorderWidth(borderWidth);
+			geom.setBorderColor(localStorage.borderColor);
 			geom.adicionarForma();
 			
 			var nmObjeto = geom.getNomeObjeto();
