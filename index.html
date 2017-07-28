@@ -46,8 +46,11 @@
 						<a class="forma-selection" data-active="#circle">
 							<i class="fa fa-circle" aria-hidden="true"></i>
 						</a>
-						<a class="forma-selection" data-active="#star">
-							<i class="fa fa-star" aria-hidden="true"></i>
+						<a class="forma-selection" data-active="#diamond">
+							<i class="fa fa-square" style="transform: rotate(45deg);	" aria-hidden="true"></i>
+						</a>
+						<a class="forma-selection" data-active="#triangle">
+							<i class="fa fa-caret-up" aria-hidden="true"></i>
 						</a>
 					</div>
 				</div>
@@ -62,10 +65,12 @@
 					</div>	
 					<div class="row">
 						<p>Espessura da borda:</p>
-					</div>
-					<div>
-						<input type="range" id="range" min="0" max="50" />
-					</div>
+					</div>	
+					<form action="#">
+						<p class="range-field">
+							<input type="range" id="range" min="0" max="50" />
+						</p>
+					</form>
 				</div>
 			</div>
 			<div id="camadas" class="hidden">

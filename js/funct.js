@@ -90,7 +90,11 @@ function verificarForma(){
 		return "square";
 	if (localStorage.forma == "#circle")
 		return "circle";
-};
+	if(localStorage.forma == "#triangle")
+		return "triangle";
+	if(localStorage.forma == "#diamond")
+		return "diamond";
+};	
 function listaObjetos(){
 	var nomeObjeto;
 	this.setNomeObjeto = function(_nomeObjeto){
@@ -127,7 +131,7 @@ $(document).ready(function(){
 			xInicial = e.pageX;
 			yInicial = e.pageY;
 			desenhar = true;
-			borderWidth = $("#range").val();
+			borderWidth = $("#range").val();	
 			geom = new geometria();
 			geom.setXInicial(xInicial);
 			geom.setYInicial(yInicial);
