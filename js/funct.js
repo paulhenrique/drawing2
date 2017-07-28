@@ -1,6 +1,7 @@
 //Script com funcionamento
 //Paulo Henrique Vieira 17/07/2017 ============
 //Classes ==========
+
 function alteraCursor(cursor){
 	$(".container-obj").css({
 		"cursor": "url('cur/"+cursor+".cur'), default"
@@ -20,8 +21,7 @@ function habDragResi(text){
 		});
 	};
 };
-function geometria(){
-	
+function geometria(){	
 	var xInicial;
 	var yInicial;
 	var forma = $("<div>");
@@ -94,7 +94,8 @@ function geometria(){
 		$(".container-obj").append(forma);
 	};
 	this.removerForma = function(){
-		//removerForma
+		var objeto = $("#" + itemAtivo.attr("data-item"));
+		objeto.remove();
 	};
 };
 function verificarForma(){
@@ -107,11 +108,15 @@ function verificarForma(){
 	if(localStorage.forma == "#diamond")
 		return "diamond";
 };	
+
 function listaObjetos(){
 	var nomeObjeto;
 	this.setNomeObjeto = function(_nomeObjeto){
 		this.nomeObjeto = _nomeObjeto;
 	};
+	this.getNomeObjeto = function(){
+		return this.nomeObjeto;
+	}	
 	this.adicionarItem = function(){
 		var li = $("<li>").attr("data-item", this.nomeObjeto);
 		li.addClass("collection-item");
@@ -119,7 +124,14 @@ function listaObjetos(){
 		$("#listObjetos").prepend(li);	
 	};
 	this.removerItem = function(){
-		//removerItem
+		itemAtivo.remove();
+	};
+	this.atualizarLista = function(){
+		$("ul#listObjetos li").click( function(){
+			$("#listObjetos li").removeClass("active");
+			$(this).addClass("active");
+			itemAtivo = $(this);
+		});
 	};
 };
 $(document).ready(function(){
@@ -136,7 +148,18 @@ $(document).ready(function(){
 	var objetoatual; 
 	var borderWidth;
 	var altura = $(document).height() + 500;	
-
+	var proporcional = false;
+	var itemAtivo;
+	//PROPORCIONALIDADE
+	$( "body" ).keydown(function( event ) {
+		if(event.key == "Shift")
+			proporcional = true;
+	});
+	$( "body" ).keyup(function( event ) {
+		if(event.key == "Shift")
+			proporcional = false;
+	});
+	//DESENHAR OBJETOS ALTERANDO TAMANHO
 	$(".container-obj").on("mousedown", function(e){
 		if (localStorage.mode == "#forma") {
 			xInicial = e.pageX;
@@ -158,21 +181,10 @@ $(document).ready(function(){
 			listObj = new listaObjetos();
 			listObj.setNomeObjeto(nmObjeto);
 			listObj.adicionarItem();
+			listObj.atualizarLista();
 			objetoatual = $("#"+nmObjeto);
 		};
 	});
-	var proporcional = false;
-	$( "body" ).keydown(function( event ) {
-		if(event.key == "Shift"){
-			proporcional = true;
-		}
-	});
-	$( "body" ).keyup(function( event ) {
-		if(event.key == "Shift"){
-			proporcional = false;
-		}
-	});
-
 	$(".container-obj").on("mousemove", function(e){
 		if(!desenhar)
 			return;		
@@ -194,6 +206,14 @@ $(document).ready(function(){
 	});
 	$(".container-obj").on("mouseup", function(){
 		desenhar = false;
+	});
+	//EXCLUSÃO DE OBJETO
+	$("#deletar-item").click(function () {
+		var geom = new geometria();
+		geom.removerForma();
+		var listObj = new listaObjetos();
+		listObj.removerItem();
+		console.log("excluindo ");
 	});
 	//CONFIGURAÇÃO DE MODO
 	$(".mode-selection").on("click", function(){
@@ -224,7 +244,6 @@ $(document).ready(function(){
 			habDragResi("habled");
 		};
 	});
-	
 	//SELEÇÃO DE FORMA
 	$(".forma-selection").on("click", function(){
 		$(".forma-selection").removeClass("active");
@@ -233,7 +252,7 @@ $(document).ready(function(){
 		localStorage.forma = forma;
 		console.log("DW MODE DRAWING FORM : " + localStorage.forma);
 	});
-
+	
 	//configurações visuais
 	$(".button-collapse").sideNav();
 	$("#painel").height(altura);
@@ -282,4 +301,3 @@ $(document).ready(function(){
 	});
 
 });
-

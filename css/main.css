@@ -49,7 +49,6 @@ main{
 	transform: rotate(45deg);
     background: linear-gradient(to right bottom, #000000 0%,#000000 50%,rgba(255, 255, 255, 0) 50%,rgba(255, 255, 255, 0) 100%);
 }
-
 .circle{
 	border-radius: 50%;
 }
@@ -64,7 +63,8 @@ main{
 }
 #listObjetos{
 	overflow-y: scroll;
-	height: 161px;
+	border: none;
+	height: 250px;
 	width: 100%;
 	/* margin-top: -1px; */
 }
@@ -80,7 +80,7 @@ i.material-icons.selected {
 	background-color: #F4F4F4;
 }
 ::-webkit-scrollbar {
-	width: 6px;
+	width: 1px;
 	background: #F4F4F4;
 }
 ::-webkit-scrollbar-thumb {
