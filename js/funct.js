@@ -16,7 +16,7 @@ function habDragResi(text){
 	if (text == "habled") {
 		$("ul#listObjetos li").each(function () {
 			var objeto = $("#" + $(this).attr("data-item"));
-			objeto.draggable({disabled:false}).resizable({disabled:false});
+			objeto.draggable({disabled:false, containment: "#containment-wrapper", scroll: false}).resizable({disabled:false});
 		});
 	};
 };
@@ -120,7 +120,6 @@ $(document).ready(function(){
 	var desenhar = false; 
 	var objetoatual; 
 	var borderWidth;
-	console.log(borderWidth);
 	var altura = $(document).height() + 500;	
 
 	$(".container-obj").on("mousedown", function(e){
@@ -128,7 +127,7 @@ $(document).ready(function(){
 			xInicial = e.pageX;
 			yInicial = e.pageY;
 			desenhar = true;
-			borderWidth = $("#borderSize span span").text();
+			borderWidth = $("#range").val();
 			geom = new geometria();
 			geom.setXInicial(xInicial);
 			geom.setYInicial(yInicial);
@@ -217,6 +216,7 @@ $(document).ready(function(){
 		localStorage.color = "red";
 	if (!localStorage.borderColor) 
 		localStorage.borderColor = "black";
+	$("#range").val(1);
 
 	//ColorPicker Configurações
 	$('#colorSelector').ColorPicker({
