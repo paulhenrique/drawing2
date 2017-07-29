@@ -82,7 +82,7 @@ function geometria(){
 		};
 		if(this.tipo == "triangle"){
 			forma.css({
-				"background": "linear-gradient(to right bottom, "+this.background+" 0%,"+this.background+" 50%,rgba(255, 255, 255, 0) 50%,rgba(255, 255, 255, 0) 100%)",
+				"background": "linear-gradient(to right bottom,"+this.background+" 49.5%,rgba(255, 255, 255, 0) 50%,rgba(255, 255, 255, 0))",
 				"position":"absolute",
 				"left":this.xInicial,
 				"top":this.yInicial,

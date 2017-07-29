@@ -7,7 +7,33 @@
 body{
 	overflow: hidden;
 }
-
+.quadrado, .diamante, .circulo, .triangulo{
+	width: 20px;
+	height: 20px;
+	background: #039be5;
+	float: left;
+	margin: 10px;
+	-webkit-transition: all .25s ease;
+	   -moz-transition: all .25s ease;
+	    -ms-transition: all .25s ease;
+	     -o-transition: all .25s ease;
+	        transition: all .25s ease;
+}
+.circulo{
+	border-radius: 100%;
+}
+.diamante, .triangulo{
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+	
+}
+.triangulo{
+	background: linear-gradient(to right bottom, #039be5 0%,#039be5 50%,rgba(255, 255, 255, 0) 50%,rgba(255, 255, 255, 0) 100%);
+	margin-top: 15px;
+}
 .draggable{
 	width: 90px; 
 	height: 90px; 
@@ -47,7 +73,7 @@ main{
 	-ms-transform: rotate(45deg);
 	-o-transform: rotate(45deg);
 	transform: rotate(45deg); */
-    background: linear-gradient(to right bottom, #000000 0%,#000000 50%,rgba(255, 255, 255, 0) 50%,rgba(255, 255, 255, 0) 100%);
+	background: linear-gradient(to right bottom, #000000 0%,#000000 50%,rgba(255, 255, 255, 0) 50%,rgba(255, 255, 255, 0) 100%);
 }
 .circle{
 	border-radius: 50%;
@@ -128,7 +154,7 @@ i.material-icons.color-option{
 	height: 30px;
 	background: url(../images/select.png) center;
 }
-a.mode-selection, a.forma-selection {
+a.mode-selection{
 	font-size: 18px;
 	height: 4px;
 	margin: 18px;
@@ -148,6 +174,14 @@ a.mode-selection.active, a.forma-selection.active {
 	/* color: #3b3bff; */
 	color: white;
 }
+a.forma-selection.active div{
+	background: white;
+}
+a.forma-selection.active div.triangulo{
+	/* background: white; */
+	background: linear-gradient(to right bottom, white 50%,rgba(255, 255, 255, 0) 50%,rgba(255, 255, 255, 0));
+
+}
 .material-tooltip{
 	z-index: 999;
 }
@@ -156,7 +190,4 @@ a.mode-selection.active, a.forma-selection.active {
 }
 .mode{
 	height: 100px;
-}
-.formas{
-	margin-top: -40px;
 }
