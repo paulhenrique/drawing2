@@ -192,9 +192,8 @@ $(document).ready(function(){
 		xAtual = e.pageX;
 		yAtual = e.pageY;
 
-		var diferencaX = xAtual - xInicial;
-		var diferencaY = yAtual - yInicial;
-
+		var diferencaX = (verificarForma() != "triangle")? xAtual - xInicial : (xAtual - xInicial) * 2;
+		var diferencaY = (verificarForma() != "triangle")? yAtual - yInicial : (yAtual - yInicial)*2;
 		if(xAtual > xInicial)
 			objetoatual.width(diferencaX);	
 		if(yAtual > yInicial){

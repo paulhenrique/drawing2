@@ -42,11 +42,11 @@ main{
 	transform: rotate(45deg);
 }
 .triangle{
-	-webkit-transform: rotate(45deg);
+	/* -webkit-transform: rotate(45deg);
 	-moz-transform: rotate(45deg);
 	-ms-transform: rotate(45deg);
 	-o-transform: rotate(45deg);
-	transform: rotate(45deg);
+	transform: rotate(45deg); */
     background: linear-gradient(to right bottom, #000000 0%,#000000 50%,rgba(255, 255, 255, 0) 50%,rgba(255, 255, 255, 0) 100%);
 }
 .circle{
