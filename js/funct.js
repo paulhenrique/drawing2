@@ -30,6 +30,13 @@ function geometria(){
 	var background;
 	var borderWidth;
 	var borderColor;
+	var posIndex;
+	this.setPosIndex = function (_pos){
+		this.posIndex = _pos;
+	}
+	this.getPosIndex = function(){
+		return this.posIndex;
+	}
 	this.setBorderColor = function (_border){
 		this.borderColor = _border;
 	}
@@ -66,6 +73,9 @@ function geometria(){
 	this.getNomeObjeto = function(){
 		return this.nomeObjeto;
 	};
+	this.atualizarIndice = function(){
+
+	}
 	this.adicionarForma = function(){
 		if(this.tipo != "triangle"){
 			forma.css({
@@ -75,6 +85,7 @@ function geometria(){
 				"background": this.background,
 				"border-width" : this.borderWidth,
 				"border-color":this.borderColor,
+				"z-index":this.posIndex,
 				"border-style":"solid",
 				"width": "1px",
 				"height": "1px"
@@ -84,6 +95,7 @@ function geometria(){
 			forma.css({
 				"background": "linear-gradient(to right bottom,"+this.background+" 49.5%,rgba(255, 255, 255, 0) 50%,rgba(255, 255, 255, 0))",
 				"position":"absolute",
+				"z-index":this.posIndex,
 				"left":this.xInicial,
 				"top":this.yInicial,
 				"width": "1px",
@@ -120,6 +132,7 @@ function listaObjetos(){
 	this.adicionarItem = function(){
 		var li = $("<li>").attr("data-item", this.nomeObjeto);
 		li.addClass("collection-item");
+		li.addClass("ui-state-default");
 		li.append(this.nomeObjeto);
 		$("#listObjetos").prepend(li);	
 	};
@@ -150,6 +163,7 @@ $(document).ready(function(){
 	var altura = $(document).height() + 500;	
 	var proporcional = false;
 	var itemAtivo;
+
 	//PROPORCIONALIDADE
 	$( "body" ).keydown(function( event ) {
 		if(event.key == "Shift")
@@ -162,6 +176,7 @@ $(document).ready(function(){
 	//DESENHAR OBJETOS ALTERANDO TAMANHO
 	$(".container-obj").on("mousedown", function(e){
 		if (localStorage.mode == "#forma") {
+			var lengthOfObjetos = $("#listObjetos li").length;
 			xInicial = e.pageX;
 			yInicial = e.pageY;
 			desenhar = true;
@@ -170,7 +185,8 @@ $(document).ready(function(){
 			geom.setXInicial(xInicial);
 			geom.setYInicial(yInicial);
 			geom.setTipo(verificarForma());
-			geom.setNomeObjeto("geometria" + $("#listObjetos li").length);
+			geom.setPosIndex(lengthOfObjetos);
+			geom.setNomeObjeto("geometria" + lengthOfObjetos);
 			geom.setBackground(localStorage.color);
 			geom.setBorderWidth(borderWidth);
 			geom.setBorderColor(localStorage.borderColor);
@@ -298,5 +314,16 @@ $(document).ready(function(){
 			$('#borderSelector div').css('backgroundColor', localStorage.borderColor);
 		}
 	});
-
+	//SORTABLE CONFIG
+	$( "#listObjetos" ).sortable({
+		out: function (event, ui){
+			var quantidadeItens = $("#listObjetos li").length;
+			$("#listObjetos li").each(function(indice, conteudo){
+				var objeto = $("#" + $(this).attr("data-item"));
+				objeto.css({
+					"z-index":(quantidadeItens - indice)
+				});
+			});	
+		}
+	});
 });
