@@ -15,21 +15,17 @@
 	<div class="row">
 		<div class="col s2 grey darken-4 white-text align-left" id="painel">
 			<div class="mode">
-				<a class="mode-selection active" data-active="#select">
+				<a class="mode-selection active tooltipped" data-position="bottom" data-delay="50" data-tooltip="Select" data-active="#select">
 					<i class="fa fa-mouse-pointer" aria-hidden="true"></i>
 				</a>
-				<a class="mode-selection"  data-active="#balde">
-					<i class="material-icons">format_color_fill</i>
+				<a class="mode-selection tooltipped" data-position="bottom" data-delay="50" data-tooltip="Adicionar Geometria" data-active="#forma">
+					<i class="fa fa-plus-square" aria-hidden="true"></i>
 				</a>
-				<a class="mode-selection"  data-active="#forma">
-					<i class="fa fa-square" aria-hidden="true"></i>
-				</a>
-				<a class="mode-selection"  data-active="#camadas">
-					<i class="material-icons">layers</i>
+				<a class="mode-selection tooltipped" data-position="bottom" data-delay="50" data-tooltip="Editar Propriedades" data-active="#camadas">
+					<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 				</a>
 			</div>
 			<div id="select" class="col s12 hidden ">
-
 			</div>
 			<div id="balde" class="col s12 hidden"> 
 
@@ -42,20 +38,15 @@
 					<div>
 						<a class="forma-selection active" data-active="#square">
 							<div class="forma-icone quadrado"></div>
-							<!-- <i class="fa fa-square" aria-hidden="true"></i> -->
 						</a>
 						<a class="forma-selection" data-active="#circle">
 							<div class="forma-icone circulo"></div>
-
-							<!-- <i class="fa fa-circle" aria-hidden="true"></i> -->
 						</a>
 						<a class="forma-selection" data-active="#diamond">
 							<div class="forma-icone diamante"></div>
-							<!-- <i class="fa fa-square" style="transform: rotate(45deg);	" aria-hidden="true"></i> -->
 						</a>
 						<a class="forma-selection" data-active="#triangle">
 							<div class="forma-icone triangulo"></div>
-							<!-- <i class="fa fa-caret-up" aria-hidden="true"></i> -->
 						</a>
 					</div>
 				</div>
@@ -79,12 +70,23 @@
 				</div>
 			</div>
 			<div id="camadas" class="hidden">
-				<ul id="listObjetos" class="collection black-text">
-				</ul>
-				<div class="right">
-					<a id="z-up" class="disabled"><i class="material-icons">keyboard_arrow_up</i></a>
-					<a id="z-down" class="disabled"><i class="material-icons">keyboard_arrow_down</i></a>
-					<a id="deletar-item" class="red-text darken-1" data-item="" ><i class="material-icons">delete</i></a>
+				<div id="layers">
+					<ul id="listObjetos" class="collection black-text">
+					</ul>
+				</div>
+				<div class="Propriedades">
+					<a id="deletar-item" class="red-text darken-1 tooltipped right" data-position="bottom" data-delay="50" data-tooltip="Deletar Item" data-item="" ><i class="material-icons">delete</i></a>
+					<h6>Propriedades</h6>
+					<div class="row">
+						<p>Cor:</p>
+						<div id="alterColor">
+							<div ></div>
+						</div>	
+						<p>Borda:</p>
+						<div id="alterBorderColor">
+							<div></div>
+						</div>	
+					</div>
 				</div>
 			</div>
 		</div>
@@ -93,12 +95,8 @@
 	</div>
 </body>
 <script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/materialize.js"></script>
 <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/materialize.js"></script>
 <script type="text/javascript" src="js/colorpicker.js"></script>
 <script type="text/javascript" src="js/funct.js"></script>
-<script type="text/javascript">
-
-
-</script>
 </html>

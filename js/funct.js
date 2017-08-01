@@ -299,6 +299,21 @@ $(document).ready(function(){
 			$('#colorSelector div').css('backgroundColor', localStorage.color);
 		}
 	});
+		$('#alterColor').ColorPicker({
+		color: color,
+		onShow: function (colpkr) {
+			$(colpkr).fadeIn(500);
+			return false;
+		},
+		onHide: function (colpkr) {
+			$(colpkr).fadeOut(500);
+			return false;
+		},
+		onChange: function (hsb, hex, rgb) {
+			localStorage.color = '#' + hex;
+			$('#colorSelector div').css('backgroundColor', localStorage.color);
+		}
+	});
 	$('#borderSelector').ColorPicker({
 		onShow: function (colpkr) {
 			$(colpkr).fadeIn(500);
@@ -325,5 +340,10 @@ $(document).ready(function(){
 				});
 			});	
 		}
+	});
+
+	//TOOLTIPS
+	$(document).ready(function(){
+		$('.tooltipped').tooltip({delay: 50});
 	});
 });
