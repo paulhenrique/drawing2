@@ -52,6 +52,9 @@ function geometria(){
 	this.setBackground = function (_backgroud){
 		this.background = _backgroud;
 	};
+	this.getBackground = function(){
+		return this.background;
+	}
 	this.setTipo = function(_tipo){
 		this.tipo = _tipo;
 	};
@@ -144,8 +147,26 @@ function listaObjetos(){
 			$("#listObjetos li").removeClass("active");
 			$(this).addClass("active");
 			itemAtivo = $(this);
+
 		});
+		
 	};
+};
+function definirPropriedades(){
+	$("#listObjetos li").click(function(){
+		objetoAlter = $("#" + $(this).attr("data-item"));
+		console.log(objetoAlter);
+		var cor = objetoAlter.css('background-color');
+	});
+	console.log(cor);
+	$('#alterColor').ColorPicker({
+		color:cor,
+		onChange: function (hsb, hex, rgb) {
+			console.log(this.color);
+			localStorage.temporColor = '#' + hex;
+			$('#alterColor div').css('backgroundColor', localStorage.temporColor);
+		}
+	});
 };
 $(document).ready(function(){
 	//variaveis globais
@@ -163,6 +184,7 @@ $(document).ready(function(){
 	var altura = $(document).height() + 500;	
 	var proporcional = false;
 	var itemAtivo;
+	var objetoAlter;
 
 	//PROPORCIONALIDADE
 	$( "body" ).keydown(function( event ) {
@@ -199,8 +221,10 @@ $(document).ready(function(){
 			listObj.adicionarItem();
 			listObj.atualizarLista();
 			objetoatual = $("#"+nmObjeto);
+			definirPropriedades();			
 		};
 	});
+
 	$(".container-obj").on("mousemove", function(e){
 		if(!desenhar)
 			return;		
@@ -209,7 +233,7 @@ $(document).ready(function(){
 		yAtual = e.pageY;
 
 		var diferencaX = (verificarForma() != "triangle")? xAtual - xInicial : (xAtual - xInicial) * 2;
-		var diferencaY = (verificarForma() != "triangle")? yAtual - yInicial : (yAtual - yInicial)*2;
+		var diferencaY = (verificarForma() != "triangle")? yAtual - yInicial : (yAtual - yInicial) * 2;
 		if(xAtual > xInicial)
 			objetoatual.width(diferencaX);	
 		if(yAtual > yInicial){
@@ -219,9 +243,8 @@ $(document).ready(function(){
 				objetoatual.height(diferencaY);	
 		}
 	});
-	$(".container-obj").on("mouseup", function(){
-		desenhar = false;
-	});
+	//ALTERANDO PROPRIEDADES
+	
 	//EXCLUSÃO DE OBJETO
 	$("#deletar-item").click(function () {
 		var geom = new geometria();
@@ -230,6 +253,11 @@ $(document).ready(function(){
 		listObj.removerItem();
 		console.log("excluindo ");
 	});
+
+	$(".container-obj").on("mouseup", function(){
+		desenhar = false;
+	});
+
 	//CONFIGURAÇÃO DE MODO
 	$(".mode-selection").on("click", function(){
 		$(".mode-selection").removeClass("active");
@@ -299,8 +327,10 @@ $(document).ready(function(){
 			$('#colorSelector div').css('backgroundColor', localStorage.color);
 		}
 	});
-		$('#alterColor').ColorPicker({
-		color: color,
+
+	$('#alterColor').ColorPicker({
+		color : objetoAlter.backgroundColor,
+		color: "#000000",
 		onShow: function (colpkr) {
 			$(colpkr).fadeIn(500);
 			return false;
@@ -311,7 +341,22 @@ $(document).ready(function(){
 		},
 		onChange: function (hsb, hex, rgb) {
 			localStorage.color = '#' + hex;
-			$('#colorSelector div').css('backgroundColor', localStorage.color);
+			$('#alterColor div').css('backgroundColor', localStorage.color);
+		}
+	});
+	$('#alterBorderColor').ColorPicker({
+		color: "#000000",
+		onShow: function (colpkr) {
+			$(colpkr).fadeIn(500);
+			return false;
+		},
+		onHide: function (colpkr) {
+			$(colpkr).fadeOut(500);
+			return false;
+		},
+		onChange: function (hsb, hex, rgb) {
+			localStorage.color = '#' + hex;
+			$('#alterBorderColor div').css('backgroundColor', localStorage.color);
 		}
 	});
 	$('#borderSelector').ColorPicker({
@@ -342,8 +387,7 @@ $(document).ready(function(){
 		}
 	});
 
-	//TOOLTIPS
-	$(document).ready(function(){
-		$('.tooltipped').tooltip({delay: 50});
-	});
+	//TOOLTIPS	
+	$('.tooltipped').tooltip({delay: 50});
+	
 });
