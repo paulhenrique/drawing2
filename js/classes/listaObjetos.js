@@ -34,9 +34,9 @@ function listaObjetos(){
 						"z-index":(quantidadeItens - indice)
 					});
 				});	
-			};
+			}
 		});
-	};
+	}
 };
 function definirPropriedades(){
 	var cor;

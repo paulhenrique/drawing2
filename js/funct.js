@@ -34,7 +34,7 @@
 			geom.adicionarForma();
 			
 			var nmObjeto = geom.getNomeObjeto();
-			listObj = new listaObjetos();
+			var listObj = new listaObjetos();
 			listObj.setNomeObjeto(nmObjeto);
 			listObj.adicionarItem();
 			listObj.atualizarLista();
