@@ -38,5 +38,6 @@ $(".mode-selection").on("click", function() {
 
     	var lst = new listaObjetos();
     	lst.sortableList();
+        lst.atualizarLista();
     };
 });

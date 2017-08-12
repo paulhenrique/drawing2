@@ -6,6 +6,13 @@ function listaObjetos(){
 	this.getNomeObjeto = function(){
 		return this.nomeObjeto;
 	}	
+	var objetoAlter;
+	this.setObjetoAlter = function(_o){
+		this.objetoAlter = _o;
+	}
+	this.getObjetoAlter = function(){
+		return this.objetoAlter;
+	}
 	this.adicionarItem = function(){
 		var li = $("<li>").attr("data-item", this.nomeObjeto);
 		li.addClass("collection-item");
@@ -21,7 +28,20 @@ function listaObjetos(){
 			$("#listObjetos li").removeClass("active");
 			$(this).addClass("active");
 			itemAtivo = $(this);
-			definirPropriedades();
+			console.log("Aaeewww", itemAtivo);
+			var objetoAlter = $("#" + $("#listObjetos li.active").attr("data-item"));
+			var cor = objetoAlter.css('background-color');
+			$("#alterColor div").css("backgroundColor", cor);
+
+			$('#alterColor').ColorPicker({
+				color:$(objetoAlter).css("backgroundColor"),
+				onChange: function (hsb, hex, rgb) {
+					objetoAlter = $("#" + $("#listObjetos li.active").attr("data-item"));
+					$('#alterColor div').css('backgroundColor', '#' + hex);
+					$(objetoAlter).css("backgroundColor", '#' + hex);
+				}
+			});
+
 		});
 	};
 	this.sortableList = function(){
@@ -37,20 +57,4 @@ function listaObjetos(){
 			}
 		});
 	}
-};
-function definirPropriedades(){
-	var cor;
-	$("#listObjetos li").click(function(){
-		console.log("BATATAAAAA");
-		objetoAlter = $("#" + $(this).attr("data-item"));
-		cor = objetoAlter.css('background-color');
-	});
-	$('#alterColor').ColorPicker({
-		color:cor,
-		onChange: function (hsb, hex, rgb) {
-			console.log(this.color);
-			localStorage.temporColor = '#' + hex;
-			$('#alterColor div').css('backgroundColor', localStorage.temporColor);
-		}
-	});
 };

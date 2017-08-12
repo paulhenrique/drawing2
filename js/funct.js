@@ -37,7 +37,7 @@
 			var listObj = new listaObjetos();
 			listObj.setNomeObjeto(nmObjeto);
 			listObj.adicionarItem();
-			listObj.atualizarLista();
+			// listObj.atualizarLista();
 			objetoatual = $("#"+nmObjeto);
 
 		};
