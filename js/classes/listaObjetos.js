@@ -31,7 +31,10 @@ function listaObjetos(){
 			console.log("Aaeewww", itemAtivo);
 			var objetoAlter = $("#" + $("#listObjetos li.active").attr("data-item"));
 			var cor = objetoAlter.css('background-color');
+			var borderColor = objetoAlter.css('border-color');
+			
 			$("#alterColor div").css("backgroundColor", cor);
+			$("#alterBorderColor div").css("backgroundColor", borderColor);
 
 			$('#alterColor').ColorPicker({
 				color:$(objetoAlter).css("backgroundColor"),
@@ -39,6 +42,14 @@ function listaObjetos(){
 					objetoAlter = $("#" + $("#listObjetos li.active").attr("data-item"));
 					$('#alterColor div').css('backgroundColor', '#' + hex);
 					$(objetoAlter).css("backgroundColor", '#' + hex);
+				}
+			});
+			$('#alterBorderColor').ColorPicker({
+				color:$(objetoAlter).css("border-color"),
+				onChange: function (hsb, hex, rgb) {
+					objetoAlter = $("#" + $("#listObjetos li.active").attr("data-item"));
+					$('#alterBorderColor div').css('backgroundColor', '#' + hex);
+					$(objetoAlter).css("border-color", '#' + hex);
 				}
 			});
 
