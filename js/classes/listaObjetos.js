@@ -28,20 +28,34 @@ function listaObjetos(){
 			$("#listObjetos li").removeClass("active");
 			$(this).addClass("active");
 			itemAtivo = $(this);
-			console.log("Aaeewww", itemAtivo);
 			var objetoAlter = $("#" + $("#listObjetos li.active").attr("data-item"));
 			var cor = objetoAlter.css('background-color');
 			var borderColor = objetoAlter.css('border-color');
+			//VERIFICAR SE É TRIANGULO
+			if($(objetoAlter).hasClass("triangle")){
+				cor = objetoAlter.css('background');
+			}
 			
 			$("#alterColor div").css("backgroundColor", cor);
 			$("#alterBorderColor div").css("backgroundColor", borderColor);
+			var borderWidth = objetoAlter.css('border-width');
+			$("#rangeAlter").val(borderWidth);
+			$("#rangeAlter").change(function(){
+				objetoAlter = $("#" + $("#listObjetos li.active").attr("data-item"));
 
+				$(objetoAlter).css('border-width', borderWidth);
+				$(this).val()
+			});
 			$('#alterColor').ColorPicker({
 				color:$(objetoAlter).css("backgroundColor"),
 				onChange: function (hsb, hex, rgb) {
 					objetoAlter = $("#" + $("#listObjetos li.active").attr("data-item"));
 					$('#alterColor div').css('backgroundColor', '#' + hex);
-					$(objetoAlter).css("backgroundColor", '#' + hex);
+					if($(objetoAlter).hasClass("triangle")){
+						$(objetoAlter).css("background", "linear-gradient(to right bottom, #" + hex+" 49.5%,rgba(255, 255, 255, 0) 50%,rgba(255, 255, 255, 0))");
+					}else{
+						$(objetoAlter).css("backgroundColor", '#' + hex);
+					}
 				}
 			});
 			$('#alterBorderColor').ColorPicker({

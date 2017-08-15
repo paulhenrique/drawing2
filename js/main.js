@@ -15,6 +15,3 @@
 	require(['./modoConfig']);
 	require(['./keys']);
 })();
-
-
-
