@@ -2,10 +2,66 @@
 	margin: 0;
 	padding: 0;
 	box-sizing:border-box;
-	font-family: sans-serif;
+	/*font-family: sans-serif;*/
 }
-body{
+body.main.application{
 	overflow: hidden;
+}
+/*HOME PAGE*/
+@keyframes alterColor{
+	0%{
+		color: #fd005f;	
+	}
+	25%{
+		color: #ff8f00;
+	}
+	50%{
+		color: #00d8fd;		
+	}
+	75%{
+		color: #00ffe9;
+	}
+	100%{
+		color: #fd005f;	
+	}
+}
+.toggle-for-sign-up:hover, .toggle-for-login:hover{
+	cursor: pointer;
+}
+.uppercase{
+	text-transform: uppercase;
+}
+.mt-5{
+	margin-top: 5rem !important;
+}
+div.bar-top{
+	padding-top:0.5rem;
+	padding-bottom: 0.1rem
+}
+div.footer{
+	padding:1rem;
+	margin-top: 5rem;
+	background: #e0e0e0;
+}
+body.main.home-page, a.btn-flat{
+	color: #fd005f;
+	-webkit-animation: alterColor 100s ease infinite alternate;
+	   -moz-animation: alterColor 100s ease infinite alternate;
+	    -ms-animation: alterColor 100s ease infinite alternate;
+	     -o-animation: alterColor 100s ease infinite alternate;
+	        animation: alterColor 100s ease infinite alternate;
+}
+body.main.home-page{
+	background-color: #383838;
+}
+body.main.home-page p{
+	text-align: justify;
+}
+h1.material-icons{
+	font-size: 10rem;
+}
+.header{
+	padding:  10rem 0 10rem 0 ;
 }
 .quadrado, .diamante, .circulo, .triangulo{
 	width: 20px;

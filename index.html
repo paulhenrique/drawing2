@@ -1,105 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Experimento</title>
+	<title>Drawing</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,400" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/colorpicker.css">
 	<link rel="stylesheet" type="text/css" href="css/materialize.min.css">
-	<link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
-<body>
-	<div class="row">
-		<div class="col s2 grey darken-4 white-text align-left" id="painel">
-			<div class="mode">
-				<a class="mode-selection active tooltipped" data-position="bottom" data-delay="50" data-tooltip="Select" data-active="#select">
-					<i class="fa fa-mouse-pointer" aria-hidden="true"></i>
-				</a>
-				<a class="mode-selection tooltipped" data-position="bottom" data-delay="50" data-tooltip="Adicionar Geometria" data-active="#forma">
-					<i class="fa fa-plus-square" aria-hidden="true"></i>
-				</a>
-				<a class="mode-selection tooltipped" data-position="bottom" data-delay="50" data-tooltip="Editar Propriedades" data-active="#camadas">
-					<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-				</a>
-			</div>
-			<div id="select" class="col s12 hidden ">
-			</div>
-			<div id="balde" class="col s12 hidden"> 
-
-			</div>
-			<div id="forma" class="hidden"> 
-				<div class="row">
-					<p class="clear">Formas:</p>
-				</div>
-				<div class="row formas">
-					<div>
-						<a class="forma-selection active" data-active="#square">
-							<div class="forma-icone quadrado"></div>
-						</a>
-						<a class="forma-selection" data-active="#circle">
-							<div class="forma-icone circulo"></div>
-						</a>
-						<a class="forma-selection" data-active="#diamond">
-							<div class="forma-icone diamante"></div>
-						</a>
-						<a class="forma-selection" data-active="#triangle">
-							<div class="forma-icone triangulo"></div>
-						</a>
-					</div>
-				</div>
-				<div class="row">
-					<p>Cor:</p>
-					<div id="colorSelector">
-						<div ></div>
-					</div>	
-					<p>Borda:</p>
-					<div id="borderSelector">
-						<div></div>
-					</div>	
-					<div class="row">
-						<p>Espessura da borda:</p>
-					</div>	
-					<form action="#">
-						<p class="range-field">
-							<input type="range" id="range" min="0" max="50" />
-						</p>
-					</form>
-				</div>
-			</div>
-			<div id="camadas" class="hidden">
-				<div id="layers">
-					<ul id="listObjetos" class="collection black-text">
-					</ul>
-				</div>
-				<div class="Propriedades">
-					<a id="deletar-item" class="red-text darken-1 tooltipped right" data-position="bottom" data-delay="50" data-tooltip="Deletar Item" data-item="" ><i class="material-icons">delete</i></a>
-					<h6>Propriedades</h6>
-					<div class="row">
-						<p>Cor:</p>
-						<div id="alterColor">
-							<div ></div>
-						</div>	
-						<p>Borda:</p>
-						<div id="alterBorderColor">
-							<div></div>
-						</div>
-						<form action="#">
-							<p class="range-field">
-							<input type="range" id="rangeAlter" min="0" max="50" />
-							</p>
-						</form>	
-					</div>
-				</div>
+<body class="main home-page">
+	<div class="container-fluid center">
+		<div class="row header">
+			<div class="col s4 offset-s4">
+				<h1 style="font-size: 10rem;" ><span style="font-weight: 100; ">d</span>.exp</h1>
+				<h1 style="font-size: 3rem; margin: 5rem 0 5rem 0;" ><span style="font-weight: 100; ">drawing</span>experience</h1>
+				<a href="login.html" class="waves-effect waves-light btn-flat tooltipped" data-position="bottom" data-delay="50" data-tooltip="Entre ou cadastre-se">Sign Up / Log In</a>
+				<!-- <img src="images/logo-drawing.png" class="responsive-img"> -->
 			</div>
 		</div>
-		<div id="containment-wrapper" class=" col s10 container-obj">
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col s4 center">
+				<h1 class="material-icons">web</h1>
+				<h4>A WEB INTERFACE</h4>
+				<p>	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</div>
+			<div class="col s4 offset-s2 center">
+				<h1 class="material-icons">people</h1>
+				<h4>YOU AS USER</h4>
+				<p>	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid footer">
+		<div class="row">
+			<p class="col s1 offset-s11"><span style="font-size: 2rem"><span style="font-weight:100;">d</span>.exp</span><br> <span style="color:#383838; font-size: 0.8rem;">as a IFSP tool</span></p>
 		</div>
 	</div>
 </body>
-<script  src="js/vendor/jquery.js"></script>
-<!-- <script  src="js/vendor/jqueryui.js"></script> -->
-<script data-main="js/main" src="js/vendor/require.js"></script>
+<script type="text/javascript" src="js/vendor/jquery.js"></script>
+<script type="text/javascript" src="js/vendor/materialize.min.js"></script>
 </html>
