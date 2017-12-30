@@ -1,3 +1,6 @@
+<?php
+	include "lib";
+?>
 <!DOCTYPE html>
 <html>
 <head>

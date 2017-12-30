@@ -1,3 +1,8 @@
+<?php 
+session_start();
+if(isset($_SESSION["user"]))
+	header("location:application.php");
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,12 +21,12 @@
 			<div class="col s4 offset-s4">
 				<h1 style="font-size: 10rem;" ><span style="font-weight: 100; ">d</span>.exp</h1>
 				<h1 style="font-size: 3rem; margin: 5rem 0 5rem 0;" ><span style="font-weight: 100; ">drawing</span>experience</h1>
-				<a href="login.html" class="waves-effect waves-light btn-flat tooltipped" data-position="bottom" data-delay="50" data-tooltip="Entre ou cadastre-se">Sign Up / Log In</a>
+				<a href="login.php" class="waves-effect waves-light btn-flat tooltipped" data-position="bottom" data-delay="50" data-tooltip="Entre ou cadastre-se">Sign Up / Log In</a>
 				<!-- <img src="images/logo-drawing.png" class="responsive-img"> -->
 			</div>
 		</div>
 	</div>
-	<div class="container">
+	<!-- <div class="container">
 		<div class="row">
 			<div class="col s4 center">
 				<h1 class="material-icons">web</h1>
@@ -44,7 +49,7 @@
 				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<div class="container-fluid footer">
 		<div class="row">
 			<p class="col s1 offset-s11"><span style="font-size: 2rem"><span style="font-weight:100;">d</span>.exp</span><br> <span style="color:#383838; font-size: 0.8rem;">as a IFSP tool</span></p>

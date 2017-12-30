@@ -7,6 +7,10 @@
 body.main.application{
 	overflow: hidden;
 }
+.icon-back i{
+    padding: 1rem !important;
+    font-size: 3rem !important;
+}
 /*HOME PAGE*/
 @keyframes alterColor{
 	0%{
@@ -25,9 +29,9 @@ body.main.application{
 		color: #fd005f;	
 	}
 }
-.toggle-for-sign-up:hover, .toggle-for-login:hover{
+/*.toggle-for-sign-up:hover, .toggle-for-login:hover{
 	cursor: pointer;
-}
+}*/
 .uppercase{
 	text-transform: uppercase;
 }
@@ -52,7 +56,8 @@ body.main.home-page, a.btn-flat{
 	        animation: alterColor 100s ease infinite alternate;
 }
 body.main.home-page{
-	background-color: #383838;
+	/*background-color: #383838;*/
+	background:white;
 }
 body.main.home-page p{
 	text-align: justify;
