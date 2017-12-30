@@ -1,5 +1,5 @@
 <?php
-	include "lib";
+	include "controller/lib.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,7 +31,6 @@
 			<div id="select" class="col s12 hidden ">
 			</div>
 			<div id="balde" class="col s12 hidden"> 
-
 			</div>
 			<div id="forma" class="hidden"> 
 				<div class="row">

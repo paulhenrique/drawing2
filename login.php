@@ -16,11 +16,6 @@ if(isset($_SESSION["user"]))
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body class="">
-	<div class="row">
-		<div class="col ">
-			<a href="index.php" class="black-text icon-back"><i class="material-icons">arrow_back</i></a>
-		</div>
-	</div>
 	<div class="container-fluid">
 		<div class="row mt-5">
 			<div class="row">
@@ -54,7 +49,7 @@ if(isset($_SESSION["user"]))
 									</div>
 								</div>
 								<div class="row right">
-									<button type="submit" class="btn-flat white-text">Go</button>
+									<button type="submit" class="btn-flat">Go</button>
 								</div>
 							</form>
 						</div>
@@ -81,7 +76,7 @@ if(isset($_SESSION["user"]))
 									</div>
 								</div>
 								<div class="row right">
-									<button type="submit" class="btn-flat white-text">Login</button>
+									<button type="submit" class="btn-flat">Login</button>
 								</div>
 							</form>
 						</div>
@@ -91,6 +86,11 @@ if(isset($_SESSION["user"]))
 
 		</div>
 
+	</div>
+	<div class="row">
+		<div class="col ">
+			<a href="index.php" class="black-text icon-back"><i class="material-icons">arrow_back</i></a>
+		</div>
 	</div>
 </body>
 <script type="text/javascript" src="js/vendor/jquery.js"></script>
