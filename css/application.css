@@ -1,23 +1,23 @@
 :root{
-	 --black-color: #191717;	
-	 --hover-color:#252525;
-	 --active-color:#444444;
-	 --link-color:white;
+	--black-color: #191717;	
+	--hover-color:#252525;
+	--active-color:#444444;
+	--link-color:white;
 }
 body.main-application{
-	overflow: hidden;
+	overflow: scroll;
 }
 .quadrado, .diamante, .circulo, .triangulo {
-    width: 1rem;
-    height: 1rem;
-    border: 2px solid white;
-    /* background: var(--link-color); */
-    margin: auto;
-    -webkit-transition: all .25s ease;
-    -moz-transition: all .25s ease;
-    -ms-transition: all .25s ease;
-    -o-transition: all .25s ease;
-    transition: all .25s ease;
+	width: 1rem;
+	height: 1rem;
+	border: 2px solid white;
+	/* background: var(--link-color); */
+	margin: auto;
+	-webkit-transition: all .25s ease;
+	-moz-transition: all .25s ease;
+	-ms-transition: all .25s ease;
+	-o-transition: all .25s ease;
+	transition: all .25s ease;
 }
 
 .circulo{
@@ -147,8 +147,8 @@ a.forma-selection.active div.triangulo{
 	clear: both;
 }
 .mode {
-    height: 60px;
-    margin-top: 20px;
+	height: 60px;
+	margin-top: 20px;
 }
 #layers{
 	height: 200px;
@@ -156,15 +156,34 @@ a.forma-selection.active div.triangulo{
 }
 #camadas {
 	z-index: 999999;
-    position: absolute;
-    background: var(--black-color);
-    color: white;
-    width: 300px;
-    height: 250px;
-    padding: 1rem;
-    right: 0;
-    top: 11%;
-    border-radius: 1.5rem 0 0 1.5rem;
+	position: absolute;
+	background: var(--black-color);
+	color: white;
+	width: 300px;
+	height: 250px;
+	padding: 1rem;
+	    right: -270px;
+	/*right: 0;*/
+	top: 11%;
+	border-radius: 1.5rem 0 0 1.5rem;
+	-webkit-transition: all .25s ease;
+	   -moz-transition: all .25s ease;
+	    -ms-transition: all .25s ease;
+	     -o-transition: all .25s ease;
+	        transition: all .25s ease;
+}
+#camadas:hover{
+	right: 0;
+}
+@keyframes FadeIn{
+	0%{
+		display: block;
+		opacity: 0;
+	}
+	100%{
+		display: block;
+		opacity: 1;
+	}
 }
 .main-application{
 	height: 100%;
@@ -173,36 +192,36 @@ a.forma-selection.active div.triangulo{
 
 .side-bar-left {
 	z-index: 999999;
-    height: 40%;
-    position: absolute;
-    left: 0;
-    background: var(--black-color);
-    width: 42px;
-    top: 11%;
-    border-radius: 0 1rem 1rem 0;
-    padding: 0.1rem;
-    font-size: 1rem !important;
-    text-align: center;
+	height: 40%;
+	position: absolute;
+	left: 0;
+	background: var(--black-color);
+	width: 42px;
+	top: 11%;
+	border-radius: 0 1rem 1rem 0;
+	padding: 0.1rem;
+	font-size: 1rem !important;
+	text-align: center;
 }
 .side-bar-left a {
-    padding: 0.5rem;
-    display: block;
-    color:  var(--link-color) !important;
-    background: var(--hover-color);
-    margin: 0.3rem;
-    border-radius: 0.3rem;
-    text-align: center;
-    -webkit-transition: all .25s ease;
-       -moz-transition: all .25s ease;
-        -ms-transition: all .25s ease;
-         -o-transition: all .25s ease;
-            transition: all .25s ease;
+	padding: 0.5rem;
+	display: block;
+	color:  var(--link-color) !important;
+	background: var(--hover-color);
+	margin: 0.3rem;
+	border-radius: 0.3rem;
+	text-align: center;
+	-webkit-transition: all .25s ease;
+	-moz-transition: all .25s ease;
+	-ms-transition: all .25s ease;
+	-o-transition: all .25s ease;
+	transition: all .25s ease;
 }
 .side-bar-left a:hover , .side-bar-left a.active{
-    padding: 0.5rem;
-    background: var(--active-color);
-    margin: 0.3rem;
-    border-radius: 0.3rem;
+	padding: 0.5rem;
+	background: var(--active-color);
+	margin: 0.3rem;
+	border-radius: 0.3rem;
 }
 .top-bar-config{
 	position: absolute;
@@ -231,24 +250,28 @@ a.forma-selection.active div.triangulo{
 }
 .top-bar-config ul li:hover ul{
 	display: block;
+	-webkit-animation: fadeIn .99s ease  normal;
+	-moz-animation: fadeIn .99s ease  normal;
+	-ms-animation: fadeIn .99s ease  normal;
+	-o-animation: fadeIn .99s ease  normal;
+	animation: fadeIn .99s ease  normal;
 }
 .top-bar-config ul li:hover{
 	background:var(--hover-color);
-
+	cursor: default;
 }
 .top-bar-config ul li ul {
-    display: none;
-    position: absolute;
-    padding: 1rem ;
-    min-width: 100px;
-    background: var(--black-color);
-    left: -9px;
-    top: 1.7rem;
+	display: none;
+	position: absolute;
+	padding: 1rem;
+	min-width: 100px;
+	background: var(--black-color);
+	left: -9px;
+	top: 1.7rem;
 
 }
 .top-bar-config ul li ul li{
 	display: block;
-	
 }
 .top-bar-properties{
 	top: 0;

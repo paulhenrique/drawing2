@@ -79,3 +79,22 @@ function main(){
 		localStorage.borderColor = "black";
 	console.log("excute-main");
 }
+function createCanvas(){
+	html2canvas(document.querySelector("#containment-wrapper")).then(canvas => {
+		document.querySelector(".canvas-container").appendChild(canvas);
+		canvas.id = "canvas";
+		
+		var img = canvas.toDataURL("image/png");
+		//var canvasData = canvasElement.toDataURL("image/png");
+		$.ajax({
+			url:'controller/save-img.php', 
+			type:'POST', 
+			data:{
+				data:img
+			}
+		}).done(function(data){
+			alert(data);
+		});
+
+	});	
+}

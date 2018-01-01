@@ -156,6 +156,8 @@ if(!isset($_SESSION["user"]))
 			</div>
 		</div>
 	</div>
+	<div class="canvas-container">
+	</div>
 </body>
 <script  src="js/vendor/labjs.js"></script>
 <script  src="js/main.js"></script>
