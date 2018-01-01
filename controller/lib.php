@@ -58,5 +58,26 @@ function register(){
 
 	$conn->close();
 }
+function toastThis($string){
+	echo "<script>";
+	echo "Materialize.toast('".$string."', 4000);";
+	echo "</script>";
+}
 
+function errorAlert($action){
+	switch ($action) {
+		case '1':
+			toastThis("Welcome, enter to access the system");
+		break;
+		case '2':
+			toastThis("User or password are wrong");
+		break;
+		case '3':
+			toastThis("You need connected to access this page");
+		break;
+		default:
+			toastThis("something wrong is not right");
+		break;
+	}
+}
 ?>

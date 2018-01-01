@@ -9,7 +9,7 @@ $(".mode-selection").on("click", function() {
     });
     $(this).addClass("active");
     var div = $(this).attr("data-active");
-    $(div).removeClass("hidden");
+    // $(div).removeClass("hidden");
     localStorage.mode = $(this).attr("data-active");
     console.log("DW MODE : " + localStorage.mode);
     $(div).addClass("show");

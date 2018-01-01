@@ -16,38 +16,6 @@ $('#colorSelector').ColorPicker({
 		$('#colorSelector div').css('backgroundColor', localStorage.color);
 	}
 });
-
-$('#alterColor').ColorPicker({
-	color : $(objetoAlter).css("background-color"),
-	color: "#000000",
-	onShow: function (colpkr) {
-		$(colpkr).fadeIn(500);
-		return false;
-	},
-	onHide: function (colpkr) {
-		$(colpkr).fadeOut(500);
-		return false;
-	},
-	onChange: function (hsb, hex, rgb) {
-		localStorage.color = '#' + hex;
-		$('#alterColor div').css('backgroundColor', localStorage.color);
-	}
-});
-$('#alterBorderColor').ColorPicker({
-	color: "#000000",
-	onShow: function (colpkr) {
-		$(colpkr).fadeIn(500);
-		return false;
-	},
-	onHide: function (colpkr) {
-		$(colpkr).fadeOut(500);
-		return false;
-	},
-	onChange: function (hsb, hex, rgb) {
-		localStorage.color = '#' + hex;
-		$('#alterBorderColor div').css('backgroundColor', localStorage.color);
-	}
-});
 $('#borderSelector').ColorPicker({
 	onShow: function (colpkr) {
 		$(colpkr).fadeIn(500);
@@ -63,3 +31,34 @@ $('#borderSelector').ColorPicker({
 		$('#borderSelector div').css('backgroundColor', localStorage.borderColor);
 	}
 });
+// $('#alterColor').ColorPicker({
+// 	color : $(objetoAlter).css("background-color"),
+// 	color: "#000000",
+// 	onShow: function (colpkr) {
+// 		$(colpkr).fadeIn(500);
+// 		return false;
+// 	},
+// 	onHide: function (colpkr) {
+// 		$(colpkr).fadeOut(500);
+// 		return false;
+// 	},
+// 	onChange: function (hsb, hex, rgb) {
+// 		localStorage.color = '#' + hex;
+// 		$('#alterColor div').css('backgroundColor', localStorage.color);
+// 	}
+// });
+// $('#alterBorderColor').ColorPicker({
+// 	color: "#000000",
+// 	onShow: function (colpkr) {
+// 		$(colpkr).fadeIn(500);
+// 		return false;
+// 	},
+// 	onHide: function (colpkr) {
+// 		$(colpkr).fadeOut(500);
+// 		return false;
+// 	},
+// 	onChange: function (hsb, hex, rgb) {
+// 		localStorage.color = '#' + hex;
+// 		$('#alterBorderColor div').css('backgroundColor', localStorage.color);
+// 	}
+// });

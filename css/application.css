@@ -1,0 +1,256 @@
+:root{
+	 --black-color: #191717;	
+	 --hover-color:#252525;
+	 --active-color:#444444;
+	 --link-color:white;
+}
+body.main-application{
+	overflow: hidden;
+}
+.quadrado, .diamante, .circulo, .triangulo {
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid white;
+    /* background: var(--link-color); */
+    margin: auto;
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    -ms-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    transition: all .25s ease;
+}
+
+.circulo{
+	border-radius: 100%;
+}
+.diamante, .triangulo{
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+.triangulo{
+	background: linear-gradient(to right bottom, var(--link-color) 0%,var(--link-color) 50%,rgba(255, 255, 255, 0) 50%,rgba(255, 255, 255, 0) 100%);
+	margin-top: 15px;
+	transform: scale3d(0.99,1.7,1) rotate(45deg);
+	margin-top: 21px;
+	border:none;
+}
+.draggable{
+	width: 90px; 
+	height: 90px; 
+	padding: 0.5em; 
+	float: left; 
+	margin: 0 10px 10px 0; 
+}
+
+#containment-wrapper { 
+	height:700px; 
+	padding: 10px; 
+	z-index: -3;
+}
+h3 { clear: left; }
+main{
+	width:100%;
+}
+.square, .circle{
+	width: 30px	;
+	height: 30px	;
+	background: red;
+	border: 1px solid black;
+}
+.diamond{
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+.triangle{
+	background: linear-gradient(to right bottom, #000000 0%,#000000 50%,rgba(255, 255, 255, 0) 50%,rgba(255, 255, 255, 0) 100%);
+}
+.circle{
+	border-radius: 50%;
+}
+.oculto{
+	opacity: 0;
+}
+.oculto:hover{
+	opacity: 1;
+}
+.wid-100{
+	width: 100%;
+}
+#listObjetos{
+	border: none;
+}
+i.material-icons:hover{
+	cursor: pointer;
+}
+i.material-icons.selected {
+	background: rgba(255, 255, 255, 0.65);
+	border-radius: 6px;
+}
+::-webkit-scrollbar-track {
+	background-color: #F4F4F4;
+}
+::-webkit-scrollbar {
+	width: 1px;
+	background: #F4F4F4;
+}
+::-webkit-scrollbar-thumb {
+	background: #dad7d7;
+}
+.hidden{
+	display: none;
+}
+.show{
+	display: block;
+}
+.select-color, .select-form{
+	width: 100%;
+}
+.select-color i , .select-form i{
+	width: 15%;
+	height: 15px;
+	padding: 0;
+	float: left;
+	text-align: center;
+	padding-bottom: 78px;
+}
+i.material-icons.color-option{
+	box-sizing: border-box;
+}
+#colorSelector, #borderSelector, #alterColor, #alterBorderColor{
+	position: relative;
+	width: 36px;
+	height: 36px;
+	background: url(../images/select.png);
+}
+#colorSelector div, #borderSelector div, #alterColor div, #alterBorderColor div{
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	width: 30px;
+	height: 30px;
+	background: url(../images/select.png) center;
+}
+
+a.forma-selection.active div.triangulo{
+	background: linear-gradient(to right bottom, white 50%,rgba(255, 255, 255, 0) 50%,rgba(255, 255, 255, 0));
+}
+.material-tooltip{
+	z-index: 999;
+}
+.clear{
+	clear: both;
+}
+.mode {
+    height: 60px;
+    margin-top: 20px;
+}
+#layers{
+	height: 200px;
+	overflow-y: scroll;
+}
+#camadas {
+	z-index: 999999;
+    position: absolute;
+    background: var(--black-color);
+    color: white;
+    width: 300px;
+    height: 250px;
+    padding: 1rem;
+    right: 0;
+    top: 11%;
+    border-radius: 1.5rem 0 0 1.5rem;
+}
+.main-application{
+	height: 100%;
+	position: relative;
+}
+
+.side-bar-left {
+	z-index: 999999;
+    height: 40%;
+    position: absolute;
+    left: 0;
+    background: var(--black-color);
+    width: 42px;
+    top: 11%;
+    border-radius: 0 1rem 1rem 0;
+    padding: 0.1rem;
+    font-size: 1rem !important;
+    text-align: center;
+}
+.side-bar-left a {
+    padding: 0.5rem;
+    display: block;
+    color:  var(--link-color) !important;
+    background: var(--hover-color);
+    margin: 0.3rem;
+    border-radius: 0.3rem;
+    text-align: center;
+    -webkit-transition: all .25s ease;
+       -moz-transition: all .25s ease;
+        -ms-transition: all .25s ease;
+         -o-transition: all .25s ease;
+            transition: all .25s ease;
+}
+.side-bar-left a:hover , .side-bar-left a.active{
+    padding: 0.5rem;
+    background: var(--active-color);
+    margin: 0.3rem;
+    border-radius: 0.3rem;
+}
+.top-bar-config{
+	position: absolute;
+	background: var(--black-color);
+	width: 100%;
+	top: 0;
+	padding: 0.3rem;
+	color: var(--link-color);
+}
+.top-bar-config ul{
+	list-style: none;
+	padding: 0;
+	margin:0;
+}
+.top-bar-config ul li a{
+	color: var(--link-color);
+}
+.top-bar-config ul li{
+	display: inline-block;
+	vertical-align: top;
+	zoom: 1; /* Fix for IE7 */
+	*display: inline; /* Fix for IE7 */
+	margin: 0 0.2rem 0 0.2rem;
+	position: relative;
+	border-radius: 10px;
+}
+.top-bar-config ul li:hover ul{
+	display: block;
+}
+.top-bar-config ul li:hover{
+	background:var(--hover-color);
+
+}
+.top-bar-config ul li ul {
+    display: none;
+    position: absolute;
+    padding: 1rem ;
+    min-width: 100px;
+    background: var(--black-color);
+    left: -9px;
+    top: 1.7rem;
+
+}
+.top-bar-config ul li ul li{
+	display: block;
+	
+}
+.top-bar-properties{
+	top: 0;
+	width:100%;
+}

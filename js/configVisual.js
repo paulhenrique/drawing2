@@ -1,8 +1,9 @@
-$(document).ready(function(){
-	//configurações visuais
-	// $(".button-collapse").sideNav();
-	var altura = $(document).height() + 500;	
+function configVisual(){
+	
+	var altura = $(window).height() + 500;	
+	var body = $(".main-application");
 	$("#painel").height(altura);
+	body.height(altura);
 	$("#containment-wrapper").height(altura);
 	$("#colorSelector div").css({"backgroundColor": localStorage.color});
 	$("#borderSelector div").css({"backgroundColor": localStorage.borderColor});
@@ -10,4 +11,6 @@ $(document).ready(function(){
 	$('.tooltipped').tooltip({delay: 50});
 
 	$("#range").val(1);
-});
+
+	console.log("teste");
+}

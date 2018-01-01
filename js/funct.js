@@ -1,3 +1,4 @@
+function main(){
 	var color = (localStorage.getItem('color'))? localStorage.color : '#0000ff';
 	var borderColor = (localStorage.getItem('borderColor'))? localStorage.borderColor : '#0000ff';	
 	var xInicial; 
@@ -76,3 +77,5 @@
 		localStorage.color = "red";
 	if (!localStorage.borderColor) 
 		localStorage.borderColor = "black";
+	console.log("excute-main");
+}

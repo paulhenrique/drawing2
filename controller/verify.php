@@ -4,13 +4,13 @@
 	if ($action=="register"){
 		$result = register();
 		if($result)
-			header("location: ../login.php?a=login");
+			header("location: ../login.php?a=1");
 	}
 	else if ($action=="login"){
 		$result = login();
 		if ($result) 
 			header("location: ../application.php");
 		else
-			echo "<script>javascript:history.back()</script>";
+			header("location: ../login.php?a=2");
 	}
 ?>

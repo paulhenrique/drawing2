@@ -1,4 +1,5 @@
 <?php 
+include "controller/lib.php";
 session_start();
 if(isset($_SESSION["user"]))
 	header("location:application.php");
@@ -96,4 +97,6 @@ if(isset($_SESSION["user"]))
 <script type="text/javascript" src="js/vendor/jquery.js"></script>
 <script type="text/javascript" src="js/vendor/materialize.min.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
+<?php $action = $_GET["a"];?>
+<?php errorAlert($action); ?>
 </html>
