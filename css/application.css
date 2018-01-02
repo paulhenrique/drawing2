@@ -4,9 +4,42 @@
 	--active-color:#444444;
 	--link-color:white;
 }
-body.main-application{
-	overflow: scroll;
+.no-padding{
+	padding: 0 !important;
 }
+body.main-application{
+	overflow: hidden;
+}
+div.dark-area{
+	background: var(--black-color);
+	color: var(--link-color);
+}
+.position-relative{
+	position: relative;
+}
+body.main-administration .side-bar{
+	min-height: 300%;
+	position: fixed;
+}
+body.main-administration ul{
+	width: 100%;
+	background: var(--black-color);
+	left: 0;
+	position: absolute;
+	margin: 0;
+	padding: 0;
+}
+body.main-administration ul a{
+	color: var(--link-color);
+}
+body.main-administration ul li{
+	padding: 1rem;
+}
+body.main-administration ul li:hover{
+	background: var(--hover-color);
+	cursor: pointer;
+}
+
 .quadrado, .diamante, .circulo, .triangulo {
 	width: 1rem;
 	height: 1rem;
@@ -162,15 +195,15 @@ a.forma-selection.active div.triangulo{
 	width: 300px;
 	height: 250px;
 	padding: 1rem;
-	    right: -270px;
+	right: -270px;
 	/*right: 0;*/
 	top: 11%;
 	border-radius: 1.5rem 0 0 1.5rem;
 	-webkit-transition: all .25s ease;
-	   -moz-transition: all .25s ease;
-	    -ms-transition: all .25s ease;
-	     -o-transition: all .25s ease;
-	        transition: all .25s ease;
+	-moz-transition: all .25s ease;
+	-ms-transition: all .25s ease;
+	-o-transition: all .25s ease;
+	transition: all .25s ease;
 }
 #camadas:hover{
 	right: 0;

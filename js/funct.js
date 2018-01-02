@@ -78,12 +78,15 @@ function main(){
 	if (!localStorage.borderColor) 
 		localStorage.borderColor = "black";
 	console.log("excute-main");
+
+	$("#save-drawing").on("click", function(){
+		createCanvas();
+	})
 }
 function createCanvas(){
 	html2canvas(document.querySelector("#containment-wrapper")).then(canvas => {
-		document.querySelector(".canvas-container").appendChild(canvas);
-		canvas.id = "canvas";
-		
+		// document.querySelector(".canvas-container").appendChild(canvas);
+		// canvas.id = "canvas";
 		var img = canvas.toDataURL("image/png");
 		//var canvasData = canvasElement.toDataURL("image/png");
 		$.ajax({
@@ -92,9 +95,7 @@ function createCanvas(){
 			data:{
 				data:img
 			}
-		}).done(function(data){
-			alert(data);
 		});
-
 	});	
 }
+

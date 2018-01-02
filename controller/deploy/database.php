@@ -1,17 +1,29 @@
 <?php
 
-require_once '../conn.php';
+include '../conn.php';
 
 
-$sql = "CREATE TABLE user(
+$table = "CREATE TABLE user(
 	id INT 	UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	name 	VARCHAR(255) NOT NULL,
 	email 	VARCHAR(255) NOT NULL,
 	senha 	VARCHAR(255) NOT NULL
-	
 );";
 
-$resultado = mysqli_query($conn, $sql);
+$table2 = "CREATE TABLE drawings(
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	added TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	author INT NOT NULL REFERENCES user(id) ON UPDATE CASCADE ON DELETE SET NULL,
+	file VARCHAR(255) NOT NULL
+);";
 
-if(!$resultado)
-    echo mysqli_error(conn());
+$result = mysqli_query($conn, $table2);
+
+if ($result) {
+	echo "Foi";
+	mysqli_close($con);
+}else{
+	echo "não foi".$result;
+}
+
+?>

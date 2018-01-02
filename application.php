@@ -22,12 +22,13 @@ if(!isset($_SESSION["user"]))
 		<ul>
 			<li>Arquivo
 				<ul>
-					<li>Salvar</li>
+					<li id="save-drawing">Salvar</li>
 					<li>Exportar</li>
 				</ul>
 			</li>
 			<li>Opções</li>
 			<li>Ver</li>
+			<li><a href="admin.php">Admin</a></li>
 			<li><a href="controller/logout.php">Sair</a></li>
 		</ul>
 	</div>

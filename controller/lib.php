@@ -1,21 +1,10 @@
 <?php
-function view($viewName, $data = [], $templatePersonalized = false) {
-	if ($templatePersonalized) {
-		$templatePath = $viewName . '.view.php';
-	} else {
-		$templatePath = 'template.php';
-	}
-    //TODO: criar validação para verificar se o arquivo existe antes de tentar chamar!
-	require "view/" . $templatePath;
-}
-
 function login(){
 	session_start();
 	$email = $_POST["email-login"];
 	$senha = sha1($_POST["password-login"]);
-	
-	require "conn.php";
 
+	require "conn.php";
 	$sql = "SELECT * FROM user WHERE email='".$email."' AND senha='".$senha."';";
 
 	$result = mysqli_query($conn, $sql);;
@@ -25,6 +14,7 @@ function login(){
 			$_SESSION["user"]["name"] = $row["name"];
 			$_SESSION["user"]["email"] = $row["email"];
 			$_SESSION["user"]["id"] = $row["id"];
+			$_SESSION["user"]["folder"] = sha1($row["name"]);
 		}
 		return true;
 	}
@@ -36,21 +26,16 @@ function login(){
 
 function register(){
 	session_start();
-	
+
 	$email = $_POST["email-register"];
 	$senha = sha1($_POST["password-register"]);
 	$name =  $_POST["name-register"];
-	
-	echo $email;
-	echo $senha;
-	echo $name;
-	
+
 	include "conn.php";
 
 	$sql = "INSERT INTO user(email, senha, name) VALUES ('".$email."', '".$senha."', '".$name."');";
-	echo $sql;
 	$result = mysqli_query($conn, $sql);
-
+	shell_exec("mkdir users/".get_last_insert_id());
 	if($result)
 		return true;
 	else
@@ -79,5 +64,27 @@ function errorAlert($action){
 			toastThis("something wrong is not right");
 		break;
 	}
+}
+
+function get_drawings($id){
+	include 'conn.php';
+	$query = "SELECT * FROM drawings WHERE author=".$id;
+	$result = mysqli_query($conn, $query);
+	$drawings = array();
+  while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        $drawings[] = $linha;
+  }
+
+	return $drawings;
+}
+
+function get_last_insert_id(){
+	include'conn.php';
+	$query = "SELECT * FROM user ORDER BY id DESC LIMIT 1";
+	$result = mysqli_query($conn, $query);
+	while ($linha = $result->fetch_assoc()) {
+		$id =  $linha["id"];
+	}
+	return $id;
 }
 ?>

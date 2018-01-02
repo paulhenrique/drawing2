@@ -1,4 +1,4 @@
-<?php 
+<?php
 include "controller/lib.php";
 session_start();
 if(isset($_SESSION["user"]))

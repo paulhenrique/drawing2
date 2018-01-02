@@ -29,15 +29,16 @@ $(".mode-selection").on("click", function() {
     	alteraCursor("default");
     	habDragResi("habled");
     };
-    // ============================
-    // CAMADAS
-    // ============================
-    if (localStorage.mode == "#camadas") {
-    	alteraCursor("default");
-    	habDragResi("habled");
-
-    	var lst = new listaObjetos();
-    	lst.sortableList();
-        lst.atualizarLista();
-    };
+    
 });
+// ============================
+// CAMADAS
+// ============================s
+$("#camadas").on("mouseover", function (argument) {
+        alteraCursor("default");
+        habDragResi("habled");
+
+        var lst = new listaObjetos();
+        lst.sortableList();
+        lst.atualizarLista();
+})
