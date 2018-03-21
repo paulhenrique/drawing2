@@ -61,14 +61,15 @@ function errorAlert($action){
 			toastThis("You need connected to access this page");
 		break;
 		default:
-			toastThis("something wrong is not right");
+
 		break;
 	}
 }
 
 function get_drawings($id){
 	include 'conn.php';
-	$query = "SELECT * FROM drawings WHERE author=".$id;
+	// $query = "SELECT * FROM drawings WHERE author=".$id;
+	$query = "SELECT drawings.id, author, title, file, added, name  FROM drawings INNER JOIN user ON drawings.author=user.id WHERE author=".$id;
 	$result = mysqli_query($conn, $query);
 	$drawings = array();
   while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -86,5 +87,23 @@ function get_last_insert_id(){
 		$id =  $linha["id"];
 	}
 	return $id;
+}
+function verify_email(){
+	include 'conn.php';
+	$email = $_POST["email"];
+	$query = "SELECT * FROM user WHERE email ='".$email."'";
+	$result = mysqli_query($conn, $query);
+	if($result->num_rows>0)
+		return true; //há um email registrado
+	else
+		return false; //não há um email registrado
+}
+
+function delete_drawing(){
+	include "conn.php";
+	$drawing_id = $_POST["id"];
+	$query = "DELETE from drawings WHERE id=".$drawing_id;
+	$result = mysqli_query($conn, $query);
+	return ($result)? true:false;
 }
 ?>

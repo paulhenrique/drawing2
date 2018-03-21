@@ -1,14 +1,23 @@
 :root{
-	--black-color: #191717;	
+	--black-color: #191717;
 	--hover-color:#252525;
 	--active-color:#444444;
 	--link-color:white;
+}
+.material-tooltip {
+	z-index: 99999 !important;
+}
+.uppercase{
+	text-transform: uppercase;
+}
+.mt-5{
+	margin-top: 5rem !important;
 }
 .no-padding{
 	padding: 0 !important;
 }
 body.main-application{
-	overflow: hidden;
+	overflow-x: hidden;
 }
 div.dark-area{
 	background: var(--black-color);
@@ -71,16 +80,15 @@ body.main-administration ul li:hover{
 	border:none;
 }
 .draggable{
-	width: 90px; 
-	height: 90px; 
-	padding: 0.5em; 
-	float: left; 
-	margin: 0 10px 10px 0; 
+	width: 90px;
+	height: 90px;
+	padding: 0.5em;
+	float: left;
+	margin: 0 10px 10px 0;
 }
 
-#containment-wrapper { 
-	height:700px; 
-	padding: 10px; 
+#containment-wrapper {
+	height:700px;
 	z-index: -3;
 }
 h3 { clear: left; }
@@ -187,18 +195,18 @@ a.forma-selection.active div.triangulo{
 	height: 200px;
 	overflow-y: scroll;
 }
-#camadas {
-	z-index: 999999;
-	position: absolute;
-	background: var(--black-color);
+#camadas{
+	z-index: 999;
+	position: fixed;
+	background:#585353;
 	color: white;
-	width: 300px;
-	height: 250px;
+	width: 250px;
+	/*height: 250px;*/
 	padding: 1rem;
-	right: -270px;
+	right: 0.1rem;
 	/*right: 0;*/
 	top: 11%;
-	border-radius: 1.5rem 0 0 1.5rem;
+	border-radius: 1.5rem;
 	-webkit-transition: all .25s ease;
 	-moz-transition: all .25s ease;
 	-ms-transition: all .25s ease;
@@ -206,7 +214,10 @@ a.forma-selection.active div.triangulo{
 	transition: all .25s ease;
 }
 #camadas:hover{
-	right: 0;
+	
+}
+#camadas h1.title{
+	font-size: 1rem;
 }
 @keyframes FadeIn{
 	0%{
@@ -224,8 +235,8 @@ a.forma-selection.active div.triangulo{
 }
 
 .side-bar-left {
-	z-index: 999999;
-	height: 40%;
+	z-index: 999;
+	/*height: 40%;*/
 	position: absolute;
 	left: 0;
 	background: var(--black-color);
@@ -309,4 +320,51 @@ a.forma-selection.active div.triangulo{
 .top-bar-properties{
 	top: 0;
 	width:100%;
+}
+.content-preview-drawing div img{
+	position: relative;
+}
+.content-preview-drawing div.info {
+	bottom: 0px;
+	width: 100%;
+	height: 100%;
+	background-color: #000000;
+	-webkit-transition: all .99s linear;
+	-moz-transition: all .99s linear;
+	-ms-transition: all .99s linear;
+	-o-transition: all .99s linear;
+	transition: all .99s linear;
+	color: white;
+	padding: 10px;
+	text-align: left;
+}
+.content-preview-drawing:hover div.info {
+	opacity: 1;
+}
+.bar-footer{
+	width: 200px;
+	height: 40px;
+	margin: auto;
+	position: fixed;
+	left: 40%;
+	bottom: 0;
+	background-color: #585353;
+	border-radius: 20px 20px 0 0 ;
+	padding: 0.5rem;
+}
+.bar-footer a{
+	float: left;
+	width: 20%;
+	padding: 0.5rem;
+}
+.bar-footer a i {
+	color: #e2e2e2;
+	font-style: normal;
+}
+#camadas ul li{
+    background-color: #fff;
+    padding: 9px 20px;
+    font-size: .8rem;
+    text-transform: uppercase;
+    color: #585353;
 }

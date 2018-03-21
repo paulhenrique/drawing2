@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 if(isset($_SESSION["user"]))
 	header("location:application.php");
@@ -21,7 +21,8 @@ if(isset($_SESSION["user"]))
 			<div class="col s4 offset-s4">
 				<h1 style="font-size: 10rem;" ><span style="font-weight: 100; ">d</span>.exp</h1>
 				<h1 style="font-size: 3rem; margin: 5rem 0 5rem 0;" ><span style="font-weight: 100; ">drawing</span>experience</h1>
-				<a href="login.php" class="waves-effect waves-light btn-flat tooltipped" data-position="bottom" data-delay="50" data-tooltip="Entre ou cadastre-se">Sign Up / Log In</a>
+				<a href="login.php" class="waves-effect waves-light btn-flat">Log In</a>
+				<a href="cadastro.php" class="waves-effect waves-light btn-flat ">Sign Up</a>
 				<!-- <img src="images/logo-drawing.png" class="responsive-img"> -->
 			</div>
 		</div>

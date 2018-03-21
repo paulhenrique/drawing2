@@ -14,19 +14,19 @@ body.main.application{
 /*HOME PAGE*/
 @keyframes alterColor{
 	0%{
-		color: #fd005f;	
+		color: #fd005f;
 	}
 	25%{
 		color: #ff8f00;
 	}
 	50%{
-		color: #00d8fd;		
+		color: #00d8fd;
 	}
 	75%{
 		color: #00ffe9;
 	}
 	100%{
-		color: #fd005f;	
+		color: #fd005f;
 	}
 }
 /*.toggle-for-sign-up:hover, .toggle-for-login:hover{
@@ -47,7 +47,7 @@ div.footer{
 	margin-top: 5rem;
 	background: #e0e0e0;
 }
-body.main.home-page, a.btn-flat{
+body.main.home-page{
 	color: #fd005f;
 	-webkit-animation: alterColor 100s ease infinite alternate;
 	   -moz-animation: alterColor 100s ease infinite alternate;

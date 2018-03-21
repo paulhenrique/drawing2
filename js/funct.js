@@ -1,18 +1,34 @@
+//FUNÇÃO PRINCIPAL
 function main(){
 	var color = (localStorage.getItem('color'))? localStorage.color : '#0000ff';
-	var borderColor = (localStorage.getItem('borderColor'))? localStorage.borderColor : '#0000ff';	
-	var xInicial; 
-	var yInicial; 
-	var xFinal; 
-	var yFinal; 
-	var xAtual; 
-	var yAtual; 
-	var desenhar = false; 
-	var objetoatual; 
+	var borderColor = (localStorage.getItem('borderColor'))? localStorage.borderColor : '#0000ff';
+	var xInicial;
+	var yInicial;
+	var xFinal;
+	var yFinal;
+	var xAtual;
+	var yAtual;
+	var desenhar = false;
+	var objetoatual;
 	var borderWidth;
 	var proporcional = false;
 	var itemAtivo;
 	var objetoAlter;
+	// configurações de teclas quando pressionadas ========================
+	// shift = proporcionalidade do desenho
+
+	$( "body.main-application" ).keydown(function( event ) {
+		if(event.key == "Shift"){
+			console.log("Shift OFF");
+			proporcional = true;
+		}
+	});
+	$( "body.main-application" ).keyup(function( event ) {
+		if(event.key == "Shift"){
+			console.log("Shift On");
+			proporcional = false;
+		}
+	});
 
 
 	//DESENHAR OBJETOS ALTERANDO TAMANHO
@@ -22,7 +38,7 @@ function main(){
 			xInicial = e.pageX;
 			yInicial = e.pageY;
 			desenhar = true;
-			borderWidth = $("#range").val();	
+			borderWidth = $("#range").val();
 			geom = new geometria();
 			geom.setXInicial(xInicial);
 			geom.setYInicial(yInicial);
@@ -33,7 +49,7 @@ function main(){
 			geom.setBorderWidth(borderWidth);
 			geom.setBorderColor(localStorage.borderColor);
 			geom.adicionarForma();
-			
+
 			var nmObjeto = geom.getNomeObjeto();
 			var listObj = new listaObjetos();
 			listObj.setNomeObjeto(nmObjeto);
@@ -45,7 +61,7 @@ function main(){
 	});
 	$(".container-obj").on("mousemove", function(e){
 		if(!desenhar)
-			return;		
+			return;
 
 		xAtual = e.pageX;
 		yAtual = e.pageY;
@@ -53,12 +69,12 @@ function main(){
 		var diferencaX = (verificarForma() != "triangle")? xAtual - xInicial : (xAtual - xInicial) * 2;
 		var diferencaY = (verificarForma() != "triangle")? yAtual - yInicial : (yAtual - yInicial) * 2;
 		if(xAtual > xInicial)
-			objetoatual.width(diferencaX);	
+			objetoatual.width(diferencaX);
 		if(yAtual > yInicial){
 			if(proporcional)
-				objetoatual.height(objetoatual.width());	
+				objetoatual.height(objetoatual.width());
 			else
-				objetoatual.height(diferencaY);	
+				objetoatual.height(diferencaY);
 		}
 	});
 	$("#deletar-item").click(function () {
@@ -75,27 +91,53 @@ function main(){
 	localStorage.mode = "#select";
 	if(!localStorage.color)
 		localStorage.color = "red";
-	if (!localStorage.borderColor) 
+	if (!localStorage.borderColor)
 		localStorage.borderColor = "black";
 	console.log("excute-main");
 
 	$("#save-drawing").on("click", function(){
-		createCanvas();
-	})
+		save_canvas();
+	});
+	$(".delete-drawing").click(function(){
+		var id = $(this).attr("data-figure");
+		delete_drawing(id);
+	});
 }
-function createCanvas(){
+
+//SALVA DIV DE DESENHOS EM CANVAS E ENVIA VIA AJAX PARA CADASTRO NO BANCO ==============
+function save_canvas(){
 	html2canvas(document.querySelector("#containment-wrapper")).then(canvas => {
 		// document.querySelector(".canvas-container").appendChild(canvas);
 		// canvas.id = "canvas";
 		var img = canvas.toDataURL("image/png");
+		var title = $("#title-text").val();
 		//var canvasData = canvasElement.toDataURL("image/png");
 		$.ajax({
-			url:'controller/save-img.php', 
-			type:'POST', 
+			url:'controller/save-img.php',
+			type:'POST',
 			data:{
-				data:img
+				"data":img,
+				"title":title
 			}
 		});
-	});	
+	});
 }
-
+//DELETE DRAWINGS DO BANCO E REFRESH
+function delete_drawing (id){
+	$.ajax({
+		url:'controller/verify.php?a=delete-drawing',
+		type:'POST',
+		data:{
+			"id": id
+		},
+		success:function(result){
+			if(result==1){
+				console.log("is here")
+				$("#drawings-list-container").load("admin.php #drawings-list");
+				Materialize.toast("Excluído", 4000);
+			}else{
+				Materialize.toast("Um erro aconteceu", 4000);
+			}
+		}
+	});
+}

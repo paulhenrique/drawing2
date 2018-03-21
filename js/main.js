@@ -7,6 +7,7 @@ $LAB.setGlobalDefaults({AlwaysPreserveOrder:true})
 })
 .script("js/vendor/materialize.min.js").wait(function(){
 		console.log("LAB LOAD - Materialize");
+    $('.modal').modal();
 })
 .script("js/vendor/html2canvas.min.js").wait(function(){
 		console.log("LAB LOAD - HTML2canvas");
