@@ -1,21 +1,8 @@
-<?php
-include "controller/lib.php";
-session_start();
-if(isset($_SESSION["user"]))
-	header("location:application.php");
-?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Drawing</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Roboto:100,400" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/materialize.min.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-</head>
+<?php $authentication = false;  ?>
+<?php include 'controller/bootstrap.php' ?>
+<?php $page_title = "Cadastro - Drawing Experience" ?>
+<?php include 'controller/metainformations.php' ?>
+<?php include 'view/style.php' ?>
 <body class="">
 	<div class="container-fluid">
 		<div class="row mt-5">
@@ -57,15 +44,15 @@ if(isset($_SESSION["user"]))
 						</div>
 					</div>
 				</div>
-		</div
-	</div>
-</body>
-<script type="text/javascript" src="js/vendor/jquery.js"></script>
-<script type="text/javascript" src="js/vendor/materialize.min.js"></script>
-<script type="text/javascript" src="js/app.js"></script>
-<script type="text/javascript">
-	verify_passwords();
-</script>
-<?php $action = $_GET["a"];?>
-<?php errorAlert($action); ?>
-</html>
+			</div>
+		</div>
+	</body>
+	<?php include 'view/script.php' ?>
+	<script type="text/javascript">
+		verify_passwords();
+	</script>
+	<?php 
+	$action = (empty($_GET))? "null" : $_GET["a"];
+	errorAlert($action);
+	?>
+	</html>
