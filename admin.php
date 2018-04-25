@@ -1,17 +1,8 @@
-<?php
-include "controller/lib.php";
-include 'controller/conn.php';
-session_start();
-if(!isset($_SESSION["user"]))
-	header("location:login.php?a=3");
-$data = get_drawings($_SESSION["user"]["id"]);
-?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Drawing</title>
-	<?php include 'view/style.php' ?>
-</head>
+<?php $authentication = true; ?>
+<?php include "controller/bootstrap.php"; ?>
+<?php $page_title = "Administration Area - Application " ; ?>
+<?php $data = get_drawings($_SESSION["user"]["id"]); ?>
+<?php include "controller/metainformations.php"; ?>
 <body class="">
 	<div class="section">
 		<div class="container">
@@ -19,7 +10,6 @@ $data = get_drawings($_SESSION["user"]["id"]);
 				<h5>Your Drawings</h5>
 			</div>
 			<div class="row mt-5">
-				
 				<?php foreach ($data as $media): ?>
 					<div class="col s4 right-align content-preview-drawing">
 						<span>
@@ -36,6 +26,4 @@ $data = get_drawings($_SESSION["user"]["id"]);
 	</div>
 </div>
 </body>
-<script  src="js/vendor/labjs.js"></script>
-<script  src="js/main.js"></script>
-</html>
+<?php include 'view/script.php' ?>

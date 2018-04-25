@@ -83,7 +83,6 @@ function get_drawings($id){
 	while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 		$drawings[] = $linha;
 	}
-
 	return $drawings;
 }
 

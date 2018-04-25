@@ -1,4 +1,9 @@
 <div id="camadas">
+	<div class="row right-align">
+		<a href="admin.php"><i class="fas fa-user"></i></a>
+		<a class="modal-trigger" href="#save-drawing-modal""><i class="fas fa-save"></i></a>
+		<a href="controller/logout.php"><i class="fas fa-sign-out-alt"></i></a>
+	</div>
 	<div id="layers">
 		<ul id="listObjetos" class="collection black-text">
 		</ul>
