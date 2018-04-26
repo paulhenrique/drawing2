@@ -26,7 +26,7 @@
 			</div> -->
 			<body class="main-application user-functions">
 				<div class="bar-footer">
-					<a class="mode-selection active tooltipped" data-position="right" data-delay="50" data-tooltip="Select" data-active="#select">
+					<a class="mode-selection active" data-active="#select">
 						<i class="fa fa-mouse-pointer" aria-hidden="true"></i>
 					</a>
 					<a class="mode-selection" data-form="#square" data-active="#forma">
@@ -115,12 +115,13 @@
 					</form>
 				</div> -->
 				<div id="camadas">
+					<h1 class="title right-align"><i class="fas fa-user-circle"></i> <?= $_SESSION["user"]["name"]; ?> </h1>
 					<div id="layers">
 						<ul id="listObjetos" class="collection black-text">
 						</ul>
 					</div>
 					<div id="colors-config">
-						<h1 class="title">Colors</h1>
+						<h1 class="title">Cores</h1>
 						<div id="colorSelector">
 							<div></div>
 						</div>
@@ -150,12 +151,12 @@
 								<label for="email-login">Title</label>
 							</div>
 						</div>
-						<!-- <div class="row">
+						<div class="row">
 							<div class="input-field col s12 center">
 								<textarea id="textarea1" class="materialize-textarea validate" maxlength="150"></textarea>
 								<label for="textarea1">Description</label>
 							</div>
-						</div> -->
+						</div>
 					</form>
 					<div class="col s6">
 						<p>Os desenhos salvos no Drawing ficam disponíveis na área "admin" onde podem ser visualizados, salvos e excluídos</p>

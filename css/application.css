@@ -359,7 +359,9 @@ a.forma-selection.active div.triangulo{
 }
 .bar-footer a i {
 	color: #e2e2e2;
-	font-style: normal;
+}
+i{
+	font-style: normal !important;
 }
 #camadas ul li{
     background-color: #fff;
