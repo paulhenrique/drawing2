@@ -5,7 +5,6 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="webroot/css/fontawesome-all.css">
 	<link rel="stylesheet" type="text/css" href="webroot/css/colorpicker.css">
-	<link rel="stylesheet" type="text/css" href="webroot/css/materialize.min.css">
 	<link rel="stylesheet" type="text/css" href="webroot/css/jquery-ui.min.css">
 	<link rel="stylesheet" type="text/css" href="webroot/css/application.css">
 </head>

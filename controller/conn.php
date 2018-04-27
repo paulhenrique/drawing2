@@ -18,7 +18,7 @@ class Connect
 
     	$this->servername = "localhost";
     	$this->username = "root";
-    	$this->password = "";
+    	$this->password = "123";
     	$this->database = "drawing";        
         
     	mysqli_query(mysqli_connect($this->servername, $this->username, $this->password, $this->database), "set names 'utf8'");
