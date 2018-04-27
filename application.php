@@ -3,6 +3,7 @@
 <?php $page_title = "Drawing - Application " ; ?>
 <?php include "controller/metainformations.php"; ?>
 <body class="main-application user-functions">
+	<?php include 'view/components/navbar_general.php' ?>
 	<?php include 'view/components/footer_application.php' ?>
 	<?php include 'view/components/containment_wrapper_application.php'; ?>
 	<?php include 'view/components/sidebar_application.php'; ?>

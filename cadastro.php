@@ -1,15 +1,16 @@
 <?php $authentication = false;  ?>
 <?php include 'controller/bootstrap.php' ?>
-<?php $page_title = "Cadastro - Drawing Experience" ?>
+<?php $page_title = "Início - Drawing Experience" ?>
 <?php include 'controller/metainformations.php' ?>
 <?php include 'view/style.php' ?>
-<body class="">
+<body class=" grey lighten-5">
+	<?php include 'view/components/navbar_general.php' ?>
 	<div class="container-fluid">
 		<div class="row mt-5">
 			<div class="row">
-				<div class="col s6 offset-s3">
+				<div class="col s12 ">
 					<div class="container center">
-						<h4 class="toggle-for-sign-up">Sign Up</h4>
+						<h4 class="toggle-for-sign-up">Cadastro</h4>
 						<div class="row mt-5" id="sign-up">
 							<form class="col s12" id="register-form" method="post" action="controller/verify.php?a=register">
 								<div class="row">
@@ -37,8 +38,8 @@
 									</div>
 								</div>
 								<div class="row center mt-5">
-									<a href="index.php" class="btn-flat">Go Back</a>
-									<a class="btn-flat" id="btn-register">Cadastrar</a>
+									<a href="index.php" class="btn-flat">Voltar</a>
+									<a class="btn" id="btn-register">Cadastrar</a>
 								</div>
 							</form>
 						</div>

@@ -1,14 +1,15 @@
 <?php $authentication = false;  ?>
 <?php include 'controller/bootstrap.php' ?>
-<?php $page_title = "Login - Drawing Experience" ?>
+<?php $page_title = "Início - Drawing Experience" ?>
 <?php include 'controller/metainformations.php' ?>
 <?php include 'view/style.php' ?>
-<body>
-	<div class="container-fluid">
+<body class="grey lighten-5">
+	<?php include 'view/components/navbar_general.php' ?>
+	<div class="container-fluid ">
 		<div class="row center mt-5">
 			<div class="col s6 offset-s3 center">
 				<div class="container">
-					<h4 class="toggle-for-login">Log In</h4>
+					<h4 class="toggle-for-login">Entrar</h4>
 					<div class="row mt-5" id="login">
 						<form class="col s12" method="post" id="login_form" action="controller/verify.php?a=login">
 							<div class="row center">
@@ -24,8 +25,8 @@
 								</div>
 							</div>
 							<div class="row center mt-5">
-								<a href="index.php" class="btn-flat">Go Back</a>
-								<button class="btn-flat" type="submit" id="btn-login">Login</button>
+								<a href="index.php" class="btn-flat">Voltar</a>
+								<button class="btn" type="submit" id="btn-login">Entrar</button>
 							</div>
 						</form>
 					</div>

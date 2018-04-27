@@ -1,24 +1,29 @@
-<div id="camadas">
-	<div class="row right-align">
-		<a href="admin.php"><i class="fas fa-user"></i></a>
-		<a class="modal-trigger" href="#save-drawing-modal""><i class="fas fa-save"></i></a>
-		<a href="controller/logout.php"><i class="fas fa-sign-out-alt"></i></a>
-	</div>
+<div id="camadas" class="hoverable grey darken-4">
 	<div id="layers">
 		<ul id="listObjetos" class="collection black-text">
 		</ul>
 	</div>
-	<div id="colors-config">
-		<h1 class="title">Colors</h1>
-		<div id="colorSelector">
-			<div></div>
-		</div>
-		<div id="borderSelector">
-			<div></div>
+	<div>
+		
+		<div class="row">
+			<div class="col m2">
+				<p class="">Cor: </p>
+			</div>
+			<div class="pt-1">
+				<div class="col m2">	
+					<div id="colorSelector">
+						<div></div>
+					</div>
+				</div>
+				<div class="col m2">	
+					<div id="borderSelector">
+						<div></div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<a id="deletar-item" class="red-text darken-1 tooltipped right" data-position="bottom" data-delay="50" data-tooltip="Deletar" data-item="" ><i class="material-icons">delete</i></a>
-
 	<div class="row">
 		<p>Espessura da borda:</p>
 	</div>

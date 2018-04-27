@@ -228,23 +228,28 @@
  		background:#585353;
  		color: white;
  		width: 250px;
- 		/*height: 250px;*/
  		padding: 1rem;
  		right: 0.1rem;
- 		/*right: 0;*/
  		top: 11%;
- 		border-radius: 1.5rem;
+ 		border-radius: .2rem;
  		-webkit-transition: all .25s ease;
  		-moz-transition: all .25s ease;
  		-ms-transition: all .25s ease;
  		-o-transition: all .25s ease;
  		transition: all .25s ease;
+ 		ul li{
+ 			background-color: #fff;
+ 			padding: 9px 20px;
+ 			font-size: .8rem;
+ 			text-transform: uppercase;
+ 			color: #585353;
+ 		}
+ 		h1.title{
+ 			font-size: 1rem;
+ 		}
  	}
  	#camadas:hover{
 
- 	}
- 	#camadas h1.title{
- 		font-size: 1rem;
  	}
  	@keyframes FadeIn{
  		0%{
@@ -388,13 +393,7 @@
  		color: #e2e2e2;
  		font-style: normal;
  	}
- 	#camadas ul li{
- 		background-color: #fff;
- 		padding: 9px 20px;
- 		font-size: .8rem;
- 		text-transform: uppercase;
- 		color: #585353;
- 	}
+ 	
 
  	.equipe-circle-responsive {
  		width: 98%;
