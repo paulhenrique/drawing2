@@ -15,12 +15,13 @@
 				</div>
 				<div class="card-content">
 					<span class="card-title activator grey-text text-darken-4"><?= $media["title"] ?><i class="material-icons right">more_vert</i></span>
-					<p><a href="#">View</a></p>
 				</div>
-				<div class="card-reveal">
-					<span class="card-title grey-text text-darken-4 uppercase"><?= $media["title"] ?><i class="material-icons right">close</i></span>
+				<div class="card-reveal grey darken-4">
+					<span class="card-title white-text text-darken-4 uppercase"><?= $media["title"] ?><i class="material-icons right">close</i></span>
+					<p><a href="controller/<?= $media["file"]; ?>" download="<?= $media["title"] ?>"><i class="material-icons left">file_download</i> Download</a></p>
+					<p><a class="red-text delete-drawing" href="admin.php?page=<?= sha1("inicio") ?>" data-figure="<?= $media["id"] ?>"><i class="material-icons left">delete_forever</i> Excluir</a></p>
 					<div class="chip">
-						<?= date('d/m/Y', strtotime($media["added"])); ?>
+						Criado em: <?= date('d/m/Y', strtotime($media["added"])); ?>
 					</div>			
 				</div>
 			</div>

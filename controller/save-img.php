@@ -1,4 +1,5 @@
 <?php
+include 'conn.php';
 session_start();
 
 $title = $_POST["title"];
@@ -9,8 +10,12 @@ $author = $_SESSION["user"]["id"];
 $file = 'users/'.$author.'/'.sha1(time()).'.png';
 file_put_contents($file, $data);
 
-include 'conn.php';
+$conexao = new Connect();
+$conn = $conexao->nova_conexao();
+
 $query = "INSERT INTO drawings(file, author, title) VALUES('".$file."', '".$author."', '".$title."')";
 $result = mysqli_query($conn,$query);
 
+echo mysqli_error($conn);
+echo "Sucesso";
 ?>

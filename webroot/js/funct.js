@@ -118,6 +118,9 @@ function save_canvas(){
 			data:{
 				"data":img,
 				"title":title
+			},
+			success:function(result){
+				alert(result);
 			}
 		});
 	});
