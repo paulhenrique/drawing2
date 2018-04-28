@@ -61,3 +61,58 @@ $("#btn-register").on("click", function(e){
 	verify_email();
 	e.preventDefault();
 });
+
+function materialIcon(icone, position){
+	var icon = $("<i>");
+	icon.attr("class", "material-icons " + position);
+	icon.html(icone);
+	return icon;
+}
+function disabled_config(){
+	$(".disabled-input-remove").on("click", function(e){
+		var input = $(this).attr("data-ref");
+		var parent = $(this).parent();
+
+		var submit = $("<button>");
+		submit.attr("class", "btn waves-effect waves-light green darken-4");
+		submit.attr("type", "submit");
+
+		var cancel = $("<a>");
+		cancel.attr("class", "ml-1 btn waves-effect waves-light red darken-4 disable-input");
+		cancel.attr("data-ref", $(this).attr("data-ref"));
+
+		cancel.html("Cancelar");
+		cancel.append(materialIcon("cancel", "right"));
+
+		submit.html("Salvar");
+		submit.append(materialIcon("save", "right"));
+
+		input = $(input);
+		input.attr("disabled", false);
+		$(this).remove();
+
+		parent.append(submit);
+		parent.append(cancel);
+
+		disable_config();
+
+		e.preventDefault();
+	});
+}
+disabled_config();
+function disable_config(){
+	$(".disable-input").on("click", function (e) {
+		var parent = $(this).parent();
+		var input = $(this).attr("data-ref");
+		var edit_input = $("<a>");
+		edit_input.attr("class", "btn waves-effect waves-light disabled-input-remove");
+		edit_input.attr("data-ref", $(this).attr("data-ref"));
+		edit_input.html("Alterar");
+		edit_input.append(materialIcon("edit", "right"));
+		$(input).attr("disabled", true);
+		parent.empty();
+		parent.append(edit_input);
+		disabled_config();
+		e.preventDefault();
+	});
+}

@@ -6,29 +6,35 @@
 		</blockquote>
 	</div>
 </div>
-<form class="col m10 mt-3 " action="verify.php?a=<?= sha1("update_user") ?>" method="post">
+<?php foreach ($data_user as $user): ?>
+<form class="col m10 mt-3 " action="controller/verify.php?a=<?= sha1("update_user") ?>" method="post">
 	<div class="row">
-		<div class="input-field col m8">
-			<input placeholder="Nome" value="<?= $_SESSION["user"]["name"] ?>" id="nome_perfil" type="text" class="validate" disabled>
+		<div class="input-field col m12">
+			<input placeholder="Nome" value="<?= $user["name"] ?>" name="name" id="nome_perfil" type="text" class="validate" disabled>
+			<input type="hidden" name="id" value="<?= $_SESSION["user"]["id"]; ?>">
 			<label for="nome_perfil">Nome</label>
 		</div>
-		<div class="col m3 mt-3">
-			<a href="admin.php?page=<?= sha1("configuracoes") ?>" class="waves-effect waves-light btn">Alterar
+	</div>
+	<div class="row">
+		<div class="col m6 offset-m6 right-align">
+			<a class="waves-effect waves-light btn disabled-input-remove" data-ref="#nome_perfil">Alterar
 				<i class="material-icons right">edit</i>
-			</a>        
+			</a>
 		</div>
 	</div>
 </form>
-<form class="col m10 mt-3 " action="verify.php?a=<?= sha1("update_user") ?>" method="post">
+<form class="col m10 mt-3 " action="controller/verify.php?a=<?= sha1("update_user") ?>" method="post">
 	<div class="row">
-		<div class="input-field col m8">
-			<input placeholder="Email" value="<?= $_SESSION["user"]["email"] ?>" id="email_usuario" type="email" class="validate" name="email" disabled>
+		<div class="input-field col m12">
+			<input placeholder="Email" value="<?= $user["email"] ?>" name="email" id="email_usuario" type="email" class="validate" name="email" disabled>
 			<label for="email_usuario">Email</label>
 		</div>
-		<div class="col m3 mt-3">
-			<button class="btn waves-effect waves-light btn" type="submit">Alterar
+	</div>
+	<div class="row">
+		<div class="col m6 offset-m6 right-align">
+			<a class="btn waves-effect waves-light btn disabled-input-remove" data-ref="#email_usuario">Alterar
 				<i class="material-icons right">edit</i>
-			</button>        
+			</a>
 		</div>
 	</div>
 </form>
@@ -37,3 +43,4 @@
 		<i class="material-icons right">edit</i>
 	</button>        
 </div>
+<?php endforeach ?>

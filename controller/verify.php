@@ -36,6 +36,10 @@ include "lib.php";
 		    		$result = delete_drawing();
 		    		echo ($result)? 1:0;
 		    		break;
+		    	case sha1("update_user"):
+		    		if (update_user($_POST))
+		    			header("location: ../admin.php?page=".sha1("configuracoes"));
+		    		break;
 	    		default:
 	    			echo "Alguma coisa errada, meu amigo";
 	    			break;

@@ -119,4 +119,38 @@ function delete_drawing(){
 	$result = mysqli_query($conn, $query);
 	return ($result)? true:false;
 }
+
+function update_user($data){
+	$conexao = new Connect();
+	$conn = $conexao->nova_conexao();
+
+	$query = "UPDATE user SET ";
+	foreach($data as $key => $content):
+		$query .= $key . " = '". $content ."' ";
+		break;
+	endforeach;
+	$query .= " WHERE id = '".$data["id"]."';";
+	echo $query;
+	$result = mysqli_query($conn, $query);
+	echo mysqli_error($conn);
+	return ($result)? true : false;
+}
+
+function get_dados($table, $id){
+	$conexao = new Connect();
+	$conn = $conexao->nova_conexao();
+
+	$query = "SELECT * from ".$table. " WHERE id='". $id ."';";
+
+	$result = mysqli_query($conn, $query);
+
+	$data = array();
+	if($result->num_rows >0){
+		while ($linha = mysqli_fetch_assoc($result)) {
+			$data[] = $linha;
+		}
+	}
+
+	return $data;
+}	
 ?>
