@@ -14,6 +14,8 @@ function main(){
 	var proporcional = false;
 	var itemAtivo;
 	var objetoAlter;
+	var objects_array = [];
+	localStorage.objects = [];
 	// configurações de teclas quando pressionadas ========================
 	// shift = proporcionalidade do desenho
 
@@ -86,6 +88,8 @@ function main(){
 	});
 	$(".container-obj").on("mouseup", function(){
 		desenhar = false;
+		objects_array.push(geom);
+		localStorage.objects = JSON.stringify(objects_array);
 	});
 	//Configurações Default
 	localStorage.mode = "#select";
@@ -105,19 +109,18 @@ function main(){
 }
 
 //SALVA DIV DE DESENHOS EM CANVAS E ENVIA VIA AJAX PARA CADASTRO NO BANCO ==============
-function save_canvas(){
+function save_canvas(){	
 	html2canvas(document.querySelector("#containment-wrapper")).then(canvas => {
-		// document.querySelector(".canvas-container").appendChild(canvas);
-		// canvas.id = "canvas";
 		var img = canvas.toDataURL("image/png");
 		var title = $("#title-text").val();
-		//var canvasData = canvasElement.toDataURL("image/png");
+
 		$.ajax({
 			url:'controller/save-img.php',
 			type:'POST',
 			data:{
 				"data":img,
-				"title":title
+				"title":title,
+				"dtAlteracoes":localStorage.getItem(objects)
 			},
 			success:function(result){
 				alert(result);
