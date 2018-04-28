@@ -3,7 +3,7 @@
 <?php $page_title = "Início - Drawing Experience" ?>
 <?php include 'controller/metainformations.php' ?>
 <?php include 'view/style.php' ?>
-<body class=" grey lighten-5">
+<body class=" grey lighten-3">
 	<?php include 'view/components/navbar_general.php' ?>
 	<div class="container-fluid">
 		<div class="row mt-5">

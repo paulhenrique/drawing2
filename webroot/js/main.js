@@ -46,6 +46,9 @@ $LAB.setGlobalDefaults({AlwaysPreserveOrder:true})
 .script('webroot/js/modoConfig.js').wait(function(){
 	console.log("LAB LOAD - Mode");
 })
+.script('webroot/js/app.js').wait(function(){
+	console.log("LAB LOAD - App.js");
+})
 .script('webroot/js/keys.js').wait(function(){
 	console.log("LAB LOAD - Keys");
 	main();

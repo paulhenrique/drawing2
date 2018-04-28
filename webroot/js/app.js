@@ -1,6 +1,6 @@
 function verify_passwords(){
 	var password = document.getElementById("password_register"),
-		confirm_password = document.getElementById("password_register_verify");
+	confirm_password = document.getElementById("password_register_verify");
 
 	function validatePassword(){
 		if(password.value != confirm_password.value)
@@ -18,20 +18,20 @@ function verify_login(){
 
 	var result;
 	$.ajax({
-		url:'controller/verify.php?a=login',
+		url:'controller/verify.php?a=2736fab291f04e69b62d490c3c09361f5b82461a',
 		type:'POST',
 		data:{
 			"password-login":password,
 			"email-login":email
 		},
 		success:function (result) {
-			if(result==1){
-      	window.location.href="application.php";
-      }else{
-    		Materialize.toast("Reveja sua senha e usuário", 4000);
+			if(result =='1'){
+				window.location.href="application.php";
+			}else{
+				Materialize.toast("Reveja sua senha e usuário", 4000);
 				$("#email-login").addClass("invalid");
 				$("#password-login").addClass("invalid");
-      }
+			}
 		}
 	});
 }

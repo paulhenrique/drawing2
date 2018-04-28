@@ -17,13 +17,14 @@ include "lib.php";
 	    		return;
 	    	}
 	    	$this->action = $_GET["a"];
+	    	// echo $this->action;
 	    	switch ($this->action) {
 	    		case 'register':
 		    		$result = register();
 		    		if($result)
 		    			header("location: ../login.php?a=1");
 		    		break;
-	    		case 'login':
+	    		case sha1('login'):
 		    		$result = login();
 		    		echo ($result)? 1 : 0;
 		    		break;

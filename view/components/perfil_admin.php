@@ -18,7 +18,7 @@
 			<label for="email_perfil">Email</label>
 		</div>
 		<div class="col s10 align-right mt-3">
-			<a href="admin.php?page=<?= sha1("configuracoes") ?>" class="waves-effect waves-light right btn-small">Editar Informações
+			<a href="admin.php?page=<?= sha1("configuracoes") ?>" class="waves-effect waves-light right btn">Editar Informações
 				<i class="material-icons right">edit</i>
 			</a>        
 		</div>

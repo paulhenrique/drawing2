@@ -13,7 +13,7 @@
 			<label for="nome_perfil">Nome</label>
 		</div>
 		<div class="col m3 mt-3">
-			<a href="admin.php?page=<?= sha1("configuracoes") ?>" class="waves-effect waves-light btn-small">Alterar
+			<a href="admin.php?page=<?= sha1("configuracoes") ?>" class="waves-effect waves-light btn">Alterar
 				<i class="material-icons right">edit</i>
 			</a>        
 		</div>
@@ -26,14 +26,14 @@
 			<label for="email_usuario">Email</label>
 		</div>
 		<div class="col m3 mt-3">
-			<button class="btn waves-effect waves-light btn-small" type="submit">Alterar
+			<button class="btn waves-effect waves-light btn" type="submit">Alterar
 				<i class="material-icons right">edit</i>
 			</button>        
 		</div>
 	</div>
 </form>
 <div class="col m3 mt-3">
-	<button class="btn waves-effect waves-light btn-small" type="submit">Alterar Senha
+	<button class="btn waves-effect waves-light btn" type="submit">Alterar Senha
 		<i class="material-icons right">edit</i>
 	</button>        
 </div>
