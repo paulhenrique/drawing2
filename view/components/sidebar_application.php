@@ -1,6 +1,6 @@
 <div id="camadas" class="hoverable grey darken-4">
-	<div id="layers">
-		<ul id="listObjetos" class="collection black-text">
+	<div id="layers" >
+		<ul id="listObjetos" class="collection">
 		</ul>
 	</div>
 	<div>

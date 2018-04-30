@@ -18,7 +18,7 @@ function listaObjetos(){
 		li.addClass("collection-item");
 		li.addClass("ui-state-default");
 		li.append(this.nomeObjeto);
-		$("#listObjetos").prepend(li);	
+		$("#listObjetos").prepend(li);
 	};
 	this.removerItem = function(){
 		itemAtivo.remove();

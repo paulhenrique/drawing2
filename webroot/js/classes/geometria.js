@@ -8,8 +8,16 @@ function geometria(){
 	var borderWidth;
 	var borderColor;
 	var posIndex;
+	var width;
+	var height;
 	this.setPosIndex = function (_pos){
 		this.posIndex = _pos;
+	}
+	this.setWidth = function (_pos){
+		this.width = _pos;
+	}
+	this.setHeight = function (_pos){
+		this.height = _pos;
 	}
 	this.getPosIndex = function(){
 		return this.posIndex;
@@ -67,8 +75,8 @@ function geometria(){
 				"border-color":this.borderColor,
 				"z-index":this.posIndex,
 				"border-style":"solid",
-				"width": "1px",
-				"height": "1px"
+				"width": this.width,
+				"height": this.height
 			}).attr("id", this.nomeObjeto);	
 		};
 		if(this.tipo == "triangle"){
@@ -87,6 +95,12 @@ function geometria(){
 	};
 	this.removerForma = function(){
 		var objeto = $("#" + itemAtivo.attr("data-item"));
+		var drop_array = JSON.parse(localStorage.getItem("objects"));
+		var new_array = drop_array.filter(function(elem){
+			return elem.nomeObjeto != $(itemAtivo).attr("data-item"); 
+		});
+		localStorage.objects = JSON.stringify(new_array);
+		
 		objeto.remove();
 	};
 };

@@ -58,7 +58,8 @@ class Database
     	$table2 .= "added TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,";
     	$table2 .= "author INT NOT NULL REFERENCES user(id) ON UPDATE CASCADE ON DELETE SET NULL,";
     	$table2 .= "file VARCHAR(255) NOT NULL,";
-    	$table2 .= "title VARCHAR(255) NOT NULL";
+        $table2 .= "title VARCHAR(255) NOT NULL,";
+    	$table2 .= "dtAlteracoes longtext NOT NULL";
     	$table2 .= ");";
 
     	$conexao = new Connect();

@@ -8,6 +8,8 @@ function main(){
 	var yFinal;
 	var xAtual;
 	var yAtual;
+	var width;
+	var height;
 	var desenhar = false;
 	var objetoatual;
 	var borderWidth;
@@ -15,7 +17,27 @@ function main(){
 	var itemAtivo;
 	var objetoAlter;
 	var objects_array = [];
-	localStorage.objects = [];
+	if(!!localStorage.getItem("objects")){
+		objects_array = JSON.parse(localStorage.getItem("objects"));
+		console.log(objects_array);
+		$(objects_array).each(function(index, content){
+			geom = new geometria();
+			geom.setXInicial(content.xInicial);
+			geom.setYInicial(content.yInicial);
+			geom.setTipo(content.tipo);
+			geom.setPosIndex(content.posIndex);
+			geom.setNomeObjeto(content.nomeObjeto);
+			geom.setBackground(content.background);
+			geom.setBorderWidth(content.borderWidth);
+			geom.setBorderColor(content.borderColor);
+			geom.setWidth(content.width);
+			geom.setHeight(content.height);
+			geom.adicionarForma();	
+			var listObj = new listaObjetos();
+			listObj.setNomeObjeto(content.nomeObjeto);
+			listObj.adicionarItem();		
+		});
+	}
 	// configurações de teclas quando pressionadas ========================
 	// shift = proporcionalidade do desenho
 
@@ -32,6 +54,10 @@ function main(){
 		}
 	});
 
+	$("#erase-screen").on("click", function(){
+		localStorage.objects = "";
+		location.reload();
+	});
 
 	//DESENHAR OBJETOS ALTERANDO TAMANHO
 	$(".container-obj").on("mousedown", function(e){
@@ -49,6 +75,8 @@ function main(){
 			geom.setNomeObjeto("geometria" + lengthOfObjetos);
 			geom.setBackground(localStorage.color);
 			geom.setBorderWidth(borderWidth);
+			geom.setHeight('1px');
+			geom.setWidth('1px');
 			geom.setBorderColor(localStorage.borderColor);
 			geom.adicionarForma();
 
@@ -56,7 +84,7 @@ function main(){
 			var listObj = new listaObjetos();
 			listObj.setNomeObjeto(nmObjeto);
 			listObj.adicionarItem();
-			// listObj.atualizarLista();
+			listObj.atualizarLista();
 			objetoatual = $("#"+nmObjeto);
 
 		};
@@ -82,12 +110,14 @@ function main(){
 	$("#deletar-item").click(function () {
 		var geom = new geometria();
 		geom.removerForma();
+
 		var listObj = new listaObjetos();
 		listObj.removerItem();
-		console.log("excluindo ");
 	});
 	$(".container-obj").on("mouseup", function(){
 		desenhar = false;
+		geom.setHeight(objetoatual.height());
+		geom.setWidth(objetoatual.width());
 		objects_array.push(geom);
 		localStorage.objects = JSON.stringify(objects_array);
 	});
@@ -102,25 +132,26 @@ function main(){
 	$("#save-drawing").on("click", function(){
 		save_canvas();
 	});
-	$(".delete-drawing").click(function(){
+
+}
+$(".delete-drawing").click(function(){
 		var id = $(this).attr("data-figure");
+		console.log("here");
 		delete_drawing(id);
 	});
-}
 
 //SALVA DIV DE DESENHOS EM CANVAS E ENVIA VIA AJAX PARA CADASTRO NO BANCO ==============
 function save_canvas(){	
 	html2canvas(document.querySelector("#containment-wrapper")).then(canvas => {
 		var img = canvas.toDataURL("image/png");
 		var title = $("#title-text").val();
-
 		$.ajax({
 			url:'controller/save-img.php',
 			type:'POST',
 			data:{
 				"data":img,
 				"title":title,
-				"dtAlteracoes":localStorage.getItem(objects)
+				"dtAlteracoes":localStorage.getItem("objects")
 			},
 			success:function(result){
 				alert(result);
@@ -137,6 +168,8 @@ function delete_drawing (id){
 			"id": id
 		},
 		success:function(result){
+			console.log("is here")
+			alert(result);
 			if(result==1){
 				console.log("is here")
 				$("#drawings-list-container").load("admin.php #drawings-list");

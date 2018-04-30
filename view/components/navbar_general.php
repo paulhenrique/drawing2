@@ -1,10 +1,10 @@
-<div class="navbar-fixed ">
-	<nav>
-		<div class="nav-wrapper grey darken-4">
+<div class="navbar-fixed">
+	<nav class="grey darken-4">
+		<div class="nav-wrapper container">
 			<a href="#!" class="brand-logo ml-1">d.exp<i class="material-icons">edit</i></a>
 			<ul class="right hide-on-med-and-down">
 				<?php if ($page_title == "Drawing - Application "): ?>
-					<li><a class="white-text modal-trigger tooltipped"  data-position="left" data-tooltip="Salvar Drawing" href="#save-drawing-modal""><i class="material-icons">save</i></a></li>
+					<li><a class="white-text tooltipped" id="erase-screen" data-position="left" data-tooltip="Limpar Tela"><i class="material-icons">clear</i></a></li><li><a class="white-text modal-trigger tooltipped"  data-position="left" data-tooltip="Salvar Drawing" href="#save-drawing-modal""><i class="material-icons">save</i></a></li>
 					<li><a class="white-text tooltipped"  data-position="left" data-tooltip="Área de administração " href="admin.php"><i class="material-icons">person</i></a></li>	
 				<?php endif ?>
 				<?php if ($page_title != "Início - Drawing Experience"): ?>

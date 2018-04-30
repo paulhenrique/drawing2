@@ -5,3 +5,8 @@
 <link rel="stylesheet" type="text/css" href="webroot/css/font-awesome.min.css">
 <!-- <link rel="stylesheet" type="text/css" href="webroot/css/materialize.min.css"> -->
 <link rel="stylesheet" type="text/css" href="webroot/css/application.css">
+<style>
+    img[alt*=”www.000webhost.com”]{
+        display: none;
+    }
+</style>

@@ -41,7 +41,7 @@ function register(){
 
 	$sql = "INSERT INTO user(email, senha, name) VALUES ('".$email."', '".$senha."', '".$name."');";
 	$result = mysqli_query($conn, $sql);
-	shell_exec("mkdir users/".get_last_insert_id());
+	mkdir("users/".get_last_insert_id());
 	if($result)
 		return true;
 	else
@@ -77,7 +77,7 @@ function get_drawings($id){
 	$conn = $conexao->nova_conexao();
 
 	// $query = "SELECT * FROM drawings WHERE author=".$id;
-	$query = "SELECT drawings.id, author, title, file, added, name  FROM drawings INNER JOIN user ON drawings.author=user.id WHERE author=".$id;
+	$query = "SELECT drawings.id, dtAlteracoes, author, title, file, added, name  FROM drawings INNER JOIN user ON drawings.author=user.id WHERE author=".$id;
 	$result = mysqli_query($conn, $query);
 	$drawings = array();
 	while ($linha = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -110,11 +110,11 @@ function verify_email(){
 		return false; //não há um email registrado
 }
 
-function delete_drawing(){
+function delete_drawing($data){
 	$conexao = new Connect();
 	$conn = $conexao->nova_conexao();
 
-	$drawing_id = $_POST["id"];
+	$drawing_id = $data["id"];
 	$query = "DELETE from drawings WHERE id=".$drawing_id;
 	$result = mysqli_query($conn, $query);
 	return ($result)? true:false;

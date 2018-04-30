@@ -19,6 +19,17 @@
 				<div class="card-reveal grey darken-4">
 					<span class="card-title white-text text-darken-4 uppercase"><?= $media["title"] ?><i class="material-icons right">close</i></span>
 					<p><a href="controller/<?= $media["file"]; ?>" download="<?= $media["title"] ?>"><i class="material-icons left">file_download</i> Download</a></p>
+					
+					<form method="post" action="application.php">
+						<input type="hidden" name="data" value='<?= $media["dtAlteracoes"] ?>'>
+						<button type="submit" id="editar_data" style="display: none;"></button>
+					</form>
+					<label for="editar_data">
+						<p>
+							<a class="green-text text-darken-1" ><i class="material-icons left">edit</i> Edit</a>
+						</p>
+					</label>
+
 					<p><a class="red-text delete-drawing" href="admin.php?page=<?= sha1("inicio") ?>" data-figure="<?= $media["id"] ?>"><i class="material-icons left">delete_forever</i> Excluir</a></p>
 					<div class="chip">
 						Criado em: <?= date('d/m/Y', strtotime($media["added"])); ?>

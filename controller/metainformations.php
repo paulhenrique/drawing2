@@ -7,4 +7,9 @@
 	<link rel="stylesheet" type="text/css" href="webroot/css/colorpicker.css">
 	<link rel="stylesheet" type="text/css" href="webroot/css/jquery-ui.min.css">
 	<link rel="stylesheet" type="text/css" href="webroot/css/application.css">
+	<style>
+    img[alt*=”www.000webhost.com”]{
+        display: none;
+    }
+    </style>
 </head>

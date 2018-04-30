@@ -22,7 +22,7 @@ include "lib.php";
 	    		case 'register':
 		    		$result = register();
 		    		if($result)
-		    			header("location: ../login.php?a=1");
+		    			header("location: ../index.php");
 		    		break;
 	    		case sha1('login'):
 		    		$result = login();
@@ -33,7 +33,7 @@ include "lib.php";
 		    		echo ($result)? 1 : 0;
 		    		break;
 	    		case 'delete-drawing':
-		    		$result = delete_drawing();
+		    		$result = delete_drawing($_POST);
 		    		echo ($result)? 1:0;
 		    		break;
 		    	case sha1("update_user"):
