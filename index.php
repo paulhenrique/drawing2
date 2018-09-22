@@ -47,23 +47,6 @@
 					<p class="flow-text light ">Você só precisa se cadastrar para começar a utilizar</p>
 				</div>
 			</div>
-<!-- 			<div class="row mt-5">
-				<div class="col m4 center-align orange-text">
-					<i class="material-icons medium">mode_edit</i>
-					<h5 class="light mt-2">Desenhe</h5>
-					<p class="light grey-text text-darken-2 col m8 offset-m2">O Drawing te oferece ferramentas que possibilitam a criação de diversos tipos de desenhos.</p>
-				</div>
-				<div class="col m4 center-align blue-text text-darken-1">
-					<i class="material-icons medium">save</i>
-					<h5 class="light mt-2">Salve</h5>
-					<p class="light grey-text text-darken-2 col m8 offset-m2">É possível salvar seus drawings e editá-los depois, além disso você não perde seus drawings quando atualiza a página ou resolve terminar depois.</p>
-				</div>
-				<div class="col m4 center-align green-text">
-					<i class="material-icons medium">get_app</i>	
-					<h5 class="light mt-2">Faça o Download</h5>
-					<p class="light grey-text text-darken-2 col m8 offset-m2">Você pode fazer o download dos seus drawings, e também o download do código que faz ele ser um drawing no nosso sistema.</p>
-				</div>
-			</div> -->
 			<div class="row mt-5">
 				<div class="col m9 mt-6">
 					<h2 class="right-align light">Crie sua conta hoje mesmo! </h2>

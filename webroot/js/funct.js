@@ -14,7 +14,7 @@ function main(){
 	var objetoatual;
 	var borderWidth;
 	var proporcional = false;
-	var itemAtivo;
+	var itemAtivo;S
 	var objetoAlter;
 	var objects_array = [];
 	if(!!localStorage.getItem("objects")){

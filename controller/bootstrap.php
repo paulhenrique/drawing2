@@ -10,7 +10,7 @@ if($authentication == true){
 	$data_user = get_dados("user", $_SESSION["user"]["id"]);
 }else{
 	if(isset($_SESSION["user"]))
-		header("location:application.php");
+		header("location:admin.php");
 }
 
 

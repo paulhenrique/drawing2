@@ -1,4 +1,4 @@
-<?= (isset($_POST["data"]))? "<script>localStorage.objects = JSON.stringify(".$_POST["data"]."); </script>" : "" ; ?>
+<?= (isset($_POST["data"]))? "<script>localStorage.objects = JSON.stringify(".$_POST["data"]."); </script>" : "<script>localStorage.objects = ''; </script>" ; ?>
 <?php $authentication = true; ?>
 <?php include "controller/bootstrap.php"; ?>
 <?php $page_title = "Drawing - Application " ; ?>

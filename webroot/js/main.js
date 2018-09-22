@@ -13,7 +13,9 @@ $LAB.setGlobalDefaults({AlwaysPreserveOrder:true})
 
 	$(document).ready(function(){
 		$('.sidenav').sidenav();
+		M.AutoInit();
 	});
+
 })
 .script("webroot/js/vendor/html2canvas.min.js").wait(function(){
 	console.log("LAB LOAD - HTML2canvas");

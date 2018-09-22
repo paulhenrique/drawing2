@@ -26,9 +26,11 @@ function verify_login(){
 		},
 		success:function (result) {
 			if(result =='1'){
-				window.location.href="application.php";
+				window.location.href="admin.php";
 			}else{
-				Materialize.toast("Reveja sua senha e usuário", 4000);
+				M.toast({
+					html:"Reveja sua senha e usuário"
+				});
 				$("#email-login").addClass("invalid");
 				$("#password-login").addClass("invalid");
 			}
@@ -47,7 +49,9 @@ function verify_email(){
 			if(result==0){
 				$("#register-form").submit();
 			}else{
-				Materialize.toast("Este e-mail já está cadastrado, utilize outro", 4000);
+				Materialize.toast({
+					html: "Este e-mail já está cadastrado, utilize outro",
+				});
 				$("#email-register").addClass("invalid");
 			}
 		}

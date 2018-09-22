@@ -1,7 +1,7 @@
 #toast-container {
   display:block;
   position: fixed;
-  z-index: 10000;
+  z-index: 999999;
 
   @media #{$small-and-down} {
     min-width: 100%;
